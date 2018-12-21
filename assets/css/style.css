@@ -1,0 +1,45 @@
+.jumbotron {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: white;
+}
+
+body {
+    background: white;
+}
+
+.destination {
+    float: right;
+    width: 350px;
+    margin-top: 100px;
+    margin-right: 350px;
+    margin-bottom: 10px;
+
+}
+
+.hdr-destination-table {
+    float: right;
+    margin-left: 10px;
+    margin-top: -180px;
+    width: 250px;
+    border: none;
+}
+
+.news-card {
+    float: left;
+    margin-left: 20px;
+    border: none;
+}
+
+.weather-card {
+    float:left;
+    margin-left: 20px;
+    border: none;
+}
+
+.social-card {
+    float:left;
+    margin-left: 20px;
+    border: none;
+}
