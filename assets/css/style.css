@@ -1,0 +1,52 @@
+.jumbotron {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: white;
+
+}
+.hdr-destination-table {
+    float: right;
+    width: 200px;
+    margin-right: 10px;
+    margin-top: -190px;
+    border: none;
+}
+.news-img {
+    float:left;
+    margin-left: 10px;
+}
+.weather-img {
+    float: left;
+    margin-left: 120px;
+}
+.twitter-img {
+    float: left;
+    margin-left: 220px;
+}
+
+.destination {
+    float: right;
+    margin-top:90px;
+    margin-right: 350px;
+    width: 300px;
+
+}
+.news-card {
+    float: left;
+    margin-left: 10px;
+    border: none;
+
+}
+.weather-card {
+    float: left;
+    margin-left: 10px;
+    border: none;
+
+}
+.social-card {
+    float: left;
+    margin-left: 10px;
+    border: none;
+
+}
