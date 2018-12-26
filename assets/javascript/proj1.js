@@ -1,4 +1,4 @@
-//Current Train Schedules Data Using Firebase
+//Current Project1 Data Using Firebase
 
 //Copied Firebase Config Inforation
 var config = {
@@ -19,23 +19,56 @@ var db = firebase.database();
 //On destination click, add destination to firebase database and then add to "Destinations"
 //section on the html page
 
-$(".btn-secondary").click(function () {
+console.log("hi");
 
-    var input = $(".destination").val().trim();
-    var destArray = input.split(",");
-    var destCity = destArray[0];
-    var destZip = destArray[1];
-    var destCountry = destArray[2];
+function main() {
 
-    //Send data to the database
-    db.ref().push({
-        destDate: firebase.database.ServerValue.TIMESTAMP,
-        destCity: destCity,
-        destZip: destZip,
-        destCountry: destCountry
+    $(".btn-secondary").click(function () {
+        console.log("after click");
 
-    }) 
+        var input = $(".input-destination").val().trim();
+        console.log(input);
+        var destArray = input.split(",");
+        console.log(destArray);
+        var destCity = destArray[0];
+        var destZip = destArray[1];
+        var destCountry = destArray[2];
+
+        //Send data to the database
+        db.ref().push({
+            destCity: destCity,
+            destZip: destZip,
+            destCountry: destCountry,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+        }) 
+
+        //Get database info for last 5 destinations and display in table
+
+        //Clear current destination details
+        $("#destination-details").empty();
+
+        //Get last 5 destinations from the database
+        db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function(snapshot) {
+            
+            // Change the HTML to reflect
+            var row = $("<tr>").append(
+            $("<td>").text(snapshot.val().destCity),
+            $("<td>").text(snapshot.val().destZip),
+            $("<td>").text(snapshot.val().destCountry)
+        )
+
+            //Append row record to destinations table
+            $("#destination-details").append(row);
+
+         });
+
+    }) //End of on click function
+
+}
 
 
-
-}) //End of on click function
+//Document Ready Function
+$(document).ready(function() {
+    main();
+})

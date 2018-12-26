@@ -10,10 +10,13 @@
     float: right;
     width: 200px;
     margin-right: 10px;
-    margin-top: -190px;
+    margin-top: -195px;
     border: none;
+    height: 150px;
 }
-
+.colHeader {
+    text-decoration: none;
+}
 .news-img {
     float:left;
     margin-left: 10px;
