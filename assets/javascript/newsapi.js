@@ -14,10 +14,7 @@ function functionCallAPI(destCountry) {
     /* For news Api */
     var NEWS_API_KEY = 'b83d1089394b41b5860ba157c186b529';
     var COUNTRY = destCountry;
-    // var queryURL = "https://newsapi.org/v2/top-headlines?category=general&country=" + COUNTRY + "&apiKey=" + NEWS_API_KEY;
-
-    var queryURL = "https://newsapi.org/v2/everything?q=Washington&apiKey=" + NEWS_API_KEY;
-
+    var queryURL = "https://newsapi.org/v2/top-headlines?category=general&country=" + COUNTRY + "&apiKey=" + NEWS_API_KEY;
 
     $.ajax({
 
@@ -58,7 +55,7 @@ function drycode(response) {
 
         newbody = $('<div>').attr('class', 'card-body');
         otherElem1 = $('<h5>').text(response.articles[i].title).attr('class', 'card-title');
-        otherElem2 = $('<p>').text(response.articles[i].description).attr('hrclassef', 'card-text');
+        otherElem2 = $('<p>').text(response.articles[i].description).attr('class', 'card-text');
         otherElem3 = $('<a>').text('More').attr('href', response.articles[i].url).attr('class', 'btn btn-primary').attr('target','_blank');
         newbody.append(otherElem1, otherElem2, otherElem3);
         newDiv.append(newbody);
