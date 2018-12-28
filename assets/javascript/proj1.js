@@ -1,7 +1,14 @@
-//Project1 Using Firebase and Validate.js
+//Current Project1 Data Using Firebase
 
 //Copied Firebase Config Inforation
 var config = {
+    apiKey: "AIzaSyDZk2G8b4OOiN3rW0wDALk0ITxY2UdL0PY",
+    authDomain: "teamwinnersproject1.firebaseapp.com",
+    databaseURL: "https://teamwinnersproject1.firebaseio.com",
+    projectId: "teamwinnersproject1",
+    storageBucket: "teamwinnersproject1.appspot.com",
+    messagingSenderId: "991653674785"
+}; 
   
 //Initialize Firebase Appliction
 firebase.initializeApp(config);
