@@ -13,8 +13,10 @@ var config = {
 //Initialize Firebase Appliction
 firebase.initializeApp(config);
 
+
 //Create database reference variable
 var db = firebase.database();
+
 
 //Validate.js constraints
 var constraints = {
@@ -74,6 +76,9 @@ function showModal(message) {
     }
 } //End show modal funtion
 
+
+
+
 //Main function
 function main() {
 
@@ -131,8 +136,33 @@ function main() {
                     destZip: destZip,
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+                })
+
+                //Get database info for last 5 destinations and display in table
+
+                //Clear current destination details
+                $("#destination-details").empty();
+
+
+                //Get last 5 destinations from the database
+                db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+
+
+                    // Create new row and append city,zip and country code
+                    var row = $("<tr>").append(
+                        $("<td>").text(snapshot.val().destCity),
+                        $("<td>").text(snapshot.val().destZip),
+                        $("<td>").text(snapshot.val().destCountry)
+                    )
+
+                    //Append row record to destinations table
+                    $("#destination-details").append(row);
+
                 });
-                
+
+
+
                 //load news feeds from newsAPI on button click
                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -151,6 +181,7 @@ function main() {
     }); //End of click function        
 
 } //End of main function
+
 
 //Document Ready Function
 $(document).ready(function () {
