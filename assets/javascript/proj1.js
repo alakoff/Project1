@@ -41,7 +41,8 @@ var config = {
                destCountry: destCountry,
                dateAdded: firebase.database.ServerValue.TIMESTAMP
    
-           })
+           });
+           
             //load news feeds from newsAPI on button click
             db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
 
