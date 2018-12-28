@@ -141,7 +141,14 @@ function main() {
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
 
-                })
+                });
+
+                 //load news feeds from newsAPI on button click
+                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+
+                    functionCallAPI(snapshot.val().destCountry,snapshot.val().destCity);
+                });
+
 
                 //Clear input field
                 $(".input-destination").val("");
@@ -149,13 +156,9 @@ function main() {
                 //Get database info for last 5 destinations and display in table
                 getRecentDestinations();
 
-                //load news feeds from newsAPI on button click
-                db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
-
-                    functionCallAPI(snapshot.val().destCountry);
-                });
 
             } else {
+
 
                 //Input is entered but not correctly
                 showModal('Destination input is not valid. Please enter "city,zip,country" separated by commas. If no zip code is applicable, just enter 00000.');
