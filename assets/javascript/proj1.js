@@ -132,7 +132,14 @@ function main() {
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
 
-                })
+                });
+
+                 //load news feeds from newsAPI on button click
+                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+
+                    functionCallAPI(snapshot.val().destCountry,snapshot.val().destCity);
+                });
+
 
                 //Get database info for last 5 destinations and display in table
 
@@ -155,15 +162,7 @@ function main() {
                     $("#destination-details").append(row);
 
                 });
-
-
-
-                //load news feeds from newsAPI on button click
-                db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
-
-                    functionCallAPI(snapshot.val().destCountry);
-                });
-
+               
                 //Clear current destination input
                 $(".input-destination").val('');
 
