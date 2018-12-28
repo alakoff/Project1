@@ -27,7 +27,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
 
   <!-- Font Awesome link -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 
     <!-- Font Awesome link -->
@@ -68,8 +67,12 @@
                         <div class="hdr-table"></div>
                         <div class="card-body">
                             <table class="table table-sm table-hover table-compressed" id='destination-table'>
-                                <thead>
 
+                                  <tr class='recent'>Recent Destinations
+                                    <!-- <th scope="col" class='colHeader'></th> -->
+                                  </tr> -->
+                                </thead> -->
+                                <tbody id="destination-details" >
                                   <tr>
                                     <th scope="col" class='colHeader'>Last 5 Destinations</th>
                                   </tr>
@@ -83,8 +86,7 @@
 
                     <h1 class="display-4">Travel Destination Checker</h1>
 
-                    <p class="lead">Traveling? Want to know what's happening around your destination ?  Just enter your destination's zip code above !</p>
-                    
+                    <p class="lead">Traveling? Want to know what's happening around your destination ?  Just enter your destination's city,zip code and country code !</p>
 
                 </div>
 
@@ -92,8 +94,18 @@
 
         </div>
 
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">
+                    <i class="fa fa-close"></i>
+                </span>
+                <p class="modal-text"></p>
+            </div>
+        </div>
 
-        <!-- News Weather Social images -->
+        <!-- News Weather Yelp Images -->
         <div class="row">
             <div class="col-md-12">
 
@@ -114,7 +126,7 @@
         </div>
 
 
-        <!-- News Weater Social Cards -->
+        <!-- News Weater Yelp Cards -->
         <div class="row">
             <div class="col-md-12">
                 <!-- News Card -->
@@ -183,7 +195,7 @@
      <script src="assets/javascript/proj1.js"></script>
      <script src="assets/javascript/newsapi.js"></script>
 
-    </div>  <!--  Container End -->
+
 
 </body>
 </html>
