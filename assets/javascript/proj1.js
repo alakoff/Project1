@@ -92,7 +92,7 @@ function main() {
             $("<td>").text(snapshot.val().destCity),
             $("<td>").text(snapshot.val().destZip),
             $("<td>").text(snapshot.val().destCountry)
-        )
+        );
 
         //Append row record to destinations table
         $("#destination-details").append(row);
@@ -116,7 +116,10 @@ function main() {
             var destCity = destArray[0];
             var destZip = destArray[1];
             var destCountry = destArray[2];
-            var err = validate({destCity, destZip, destCountry}, constraints);
+
+
+            var err = validate({destCity,destZip,destCountry}, constraints);
+
             console.log(err);
 
             //If there is not an input data error
@@ -128,6 +131,7 @@ function main() {
                     destZip: destZip,
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
+
                 })
 
                 //Get database info for last 5 destinations and display in table
@@ -153,6 +157,7 @@ function main() {
                 });
 
 
+
                 //load news feeds from newsAPI on button click
                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -171,12 +176,12 @@ function main() {
 
         }
 
-    }) //End of click function        
+    }); //End of click function        
 
 } //End of main function
-
 
 //Document Ready Function
 $(document).ready(function () {
     main();
-}) //End of document ready function
+
+}); //End of document ready function
