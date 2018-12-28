@@ -2,21 +2,12 @@
 
 //Copied Firebase Config Inforation
 var config = {
-    apiKey: "AIzaSyDZk2G8b4OOiN3rW0wDALk0ITxY2UdL0PY",
-    authDomain: "teamwinnersproject1.firebaseapp.com",
-    databaseURL: "https://teamwinnersproject1.firebaseio.com",
-    projectId: "teamwinnersproject1",
-    storageBucket: "teamwinnersproject1.appspot.com",
-    messagingSenderId: "991653674785"
-};
-
+  
 //Initialize Firebase Appliction
 firebase.initializeApp(config);
 
-
 //Create database reference variable
 var db = firebase.database();
-
 
 //Validate.js constraints
 var constraints = {
@@ -76,7 +67,6 @@ function showModal (message) {
     }
 } //End show modal funtion
 
-
 //Main function
 function main() {
 
@@ -132,6 +122,11 @@ function main() {
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
                 }) 
+               //load news feeds from newsAPI on button click
+            db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+
+                functionCallAPI(snapshot.val().destCountry);
+                });      
 
             }       
 
