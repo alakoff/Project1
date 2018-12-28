@@ -129,13 +129,40 @@ function main() {
                     destCountry: destCountry,
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
                 })
+
+                //Get database info for last 5 destinations and display in table
+
+                //Clear current destination details
+                $("#destination-details").empty();
+
+
+                //Get last 5 destinations from the database
+                db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+
+
+                    // Create new row and append city,zip and country code
+                    var row = $("<tr>").append(
+                        $("<td>").text(snapshot.val().destCity),
+                        $("<td>").text(snapshot.val().destZip),
+                        $("<td>").text(snapshot.val().destCountry)
+                    )
+
+                    //Append row record to destinations table
+                    $("#destination-details").append(row);
+
+                });
+
+
                 //load news feeds from newsAPI on button click
                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
                     functionCallAPI(snapshot.val().destCountry);
                 });
 
-            }
+                //Clear current destination input
+                $(".input-destination").val('');
+
+            } 
 
         } else {
 
