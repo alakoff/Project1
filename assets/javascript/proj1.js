@@ -74,10 +74,9 @@ function showModal(message) {
     }
 } //End show modal funtion
 
-//Main function
-function main() {
 
-    //Get database info for last 5 destinations and display in table
+//Function to get database info for last 5 destinations and display in table
+function getRecentDestinations() {
 
     //Clear current destination details
     $("#destination-details").empty();
@@ -98,6 +97,15 @@ function main() {
         $("#destination-details").append(row);
 
     });
+
+} //End getRecentDestinations function
+
+
+//Main function
+function main() {
+
+    //Call function to return last 5 destinations
+    getRecentDestinations();
 
     //On click funtion for search button
     $(".btn-secondary").click(function () {
@@ -130,27 +138,8 @@ function main() {
                     dateAdded: firebase.database.ServerValue.TIMESTAMP
                 })
 
-                //Get database info for last 5 destinations and display in table
-
-                //Clear current destination details
-                $("#destination-details").empty();
-
-
-                //Get last 5 destinations from the database
-                db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
-
-
-                    // Create new row and append city,zip and country code
-                    var row = $("<tr>").append(
-                        $("<td>").text(snapshot.val().destCity),
-                        $("<td>").text(snapshot.val().destZip),
-                        $("<td>").text(snapshot.val().destCountry)
-                    )
-
-                    //Append row record to destinations table
-                    $("#destination-details").append(row);
-
-                });
+                //Call function to return last 5 destinations
+                getRecentDestinations();
 
 
                 //load news feeds from newsAPI on button click
@@ -162,12 +151,16 @@ function main() {
                 //Clear current destination input
                 $(".input-destination").val('');
 
-            } 
+            } else {
+
+                //Input entered but not correctly
+                showModal('Your input is not valid. Please enter your destination with commas in "city,zip code,country code" format!');
+            }
 
         } else {
 
             //Input is not entered, prompt to enter input
-            showModal('Please enter you destination city, zip code and country code!');
+            showModal('Please enter your destination city, zip code and country code!');
 
         }
 

@@ -14,7 +14,10 @@ function functionCallAPI(destCountry) {
     /* For news Api */
     var NEWS_API_KEY = 'b83d1089394b41b5860ba157c186b529';
     var COUNTRY = destCountry;
-    var queryURL = "https://newsapi.org/v2/top-headlines?category=general&country=" + COUNTRY + "&apiKey=" + NEWS_API_KEY;
+    // var queryURL = "https://newsapi.org/v2/top-headlines?category=general&country=" + COUNTRY + "&apiKey=" + NEWS_API_KEY;
+
+    var queryURL = "https://newsapi.org/v2/everything?q=Washington&apiKey=" + NEWS_API_KEY;
+
 
     $.ajax({
 
