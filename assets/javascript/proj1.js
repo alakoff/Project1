@@ -77,32 +77,36 @@ function showModal(message) {
 } //End show modal funtion
 
 
+//Function to get recent destinations
+function getRecentDestinations() {
+
+     //Clear current destination details
+     $("#destination-details").empty();
+
+     //Get last 5 destinations from the database
+     db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+ 
+         // Create new row and append city,zip and country code
+         var row = $("<tr>").append(
+             $("<td>").text(snapshot.val().destCity),
+             $("<td>").text(snapshot.val().destZip),
+             $("<td>").text(snapshot.val().destCountry)
+         );
+ 
+         //Append row record to destinations table
+         $("#destination-details").append(row);
+ 
+     });
+
+} //End getRecentDestinations
 
 
 //Main function
 function main() {
 
     //Get database info for last 5 destinations and display in table
-
-    //Clear current destination details
-    $("#destination-details").empty();
-
-
-    //Get last 5 destinations from the database
-    db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
-
-
-        // Create new row and append city,zip and country code
-        var row = $("<tr>").append(
-            $("<td>").text(snapshot.val().destCity),
-            $("<td>").text(snapshot.val().destZip),
-            $("<td>").text(snapshot.val().destCountry)
-        );
-
-        //Append row record to destinations table
-        $("#destination-details").append(row);
-
-    });
+    getRecentDestinations();
+   
 
     //On click funtion for search button
     $(".btn-secondary").click(function () {
@@ -139,35 +143,22 @@ function main() {
 
                 })
 
+                //Clear input field
+                $(".input-destination").val("");
+
                 //Get database info for last 5 destinations and display in table
-
-                //Clear current destination details
-                $("#destination-details").empty();
-
-
-                //Get last 5 destinations from the database
-                db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
-
-
-                    // Create new row and append city,zip and country code
-                    var row = $("<tr>").append(
-                        $("<td>").text(snapshot.val().destCity),
-                        $("<td>").text(snapshot.val().destZip),
-                        $("<td>").text(snapshot.val().destCountry)
-                    )
-
-                    //Append row record to destinations table
-                    $("#destination-details").append(row);
-
-                });
-
-
+                getRecentDestinations();
 
                 //load news feeds from newsAPI on button click
                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
                     functionCallAPI(snapshot.val().destCountry);
                 });
+
+            } else {
+
+                //Input is entered but not correctly
+                showModal('Destination input is not valid. Please enter "city,zip,country" separated by commas. If no zip code is applicable, just enter 00000.');
 
             }
 
