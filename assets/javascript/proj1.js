@@ -116,7 +116,9 @@ function main() {
             var destCity = destArray[0];
             var destZip = destArray[1];
             var destCountry = destArray[2];
-            var err = validate({ destCity, destZip, destCountry }, constraints);
+
+            var err = validate({destCity, destZip, destCountry}, constraints);
+
             console.log(err);
 
             //If there is not an input data error
@@ -152,4 +154,5 @@ function main() {
 //Document Ready Function
 $(document).ready(function () {
     main();
+
 }); //End of document ready function

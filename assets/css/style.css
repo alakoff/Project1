@@ -57,16 +57,14 @@
     float: left;
     margin-left: 10px;
     border: none;
-
 }
 
 .social-card {
     float: left;
     margin-left: 10px;
     border: none;
-
-
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -95,7 +93,7 @@
         background: lightgray;
         font-weight: bold;
         color: red;
-        width: 5%
+        width: 5%;
         font-size: 20px;
 }
 
