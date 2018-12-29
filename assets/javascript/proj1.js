@@ -13,8 +13,10 @@ var config = {
 //Initialize Firebase Appliction
 firebase.initializeApp(config);
 
+
 //Create database reference variable
 var db = firebase.database();
+
 
 //Validate.js constraints
 var constraints = {
@@ -74,30 +76,37 @@ function showModal(message) {
     }
 } //End show modal funtion
 
+
+//Function to get recent destinations
+function getRecentDestinations() {
+
+     //Clear current destination details
+     $("#destination-details").empty();
+
+     //Get last 5 destinations from the database
+     db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+ 
+         // Create new row and append city,zip and country code
+         var row = $("<tr>").append(
+             $("<td>").text(snapshot.val().destCity),
+             $("<td>").text(snapshot.val().destZip),
+             $("<td>").text(snapshot.val().destCountry)
+         );
+ 
+         //Append row record to destinations table
+         $("#destination-details").append(row);
+ 
+     });
+
+} //End getRecentDestinations
+
+
 //Main function
 function main() {
 
     //Get database info for last 5 destinations and display in table
-
-    //Clear current destination details
-    $("#destination-details").empty();
-
-
-    //Get last 5 destinations from the database
-    db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
-
-
-        // Create new row and append city,zip and country code
-        var row = $("<tr>").append(
-            $("<td>").text(snapshot.val().destCity),
-            $("<td>").text(snapshot.val().destZip),
-            $("<td>").text(snapshot.val().destCountry)
-        );
-
-        //Append row record to destinations table
-        $("#destination-details").append(row);
-
-    });
+    getRecentDestinations();
+   
 
     //On click funtion for search button
     $(".btn-secondary").click(function () {
@@ -141,32 +150,20 @@ function main() {
                 });
 
 
+                //Clear input field
+                $(".input-destination").val("");
+
                 //Get database info for last 5 destinations and display in table
-
-                //Clear current destination details
-                $("#destination-details").empty();
+                getRecentDestinations();
 
 
-                //Get last 5 destinations from the database
-                db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+            } else {
 
 
-                    // Create new row and append city,zip and country code
-                    var row = $("<tr>").append(
-                        $("<td>").text(snapshot.val().destCity),
-                        $("<td>").text(snapshot.val().destZip),
-                        $("<td>").text(snapshot.val().destCountry)
-                    )
+                //Input is entered but not correctly
+                showModal('Destination input is not valid. Please enter "city,zip,country" separated by commas. If no zip code is applicable, just enter 00000.');
 
-                    //Append row record to destinations table
-                    $("#destination-details").append(row);
-
-                });
-               
-                //Clear current destination input
-                $(".input-destination").val('');
-
-            } 
+            }
 
         } else {
 
@@ -178,6 +175,7 @@ function main() {
     }); //End of click function        
 
 } //End of main function
+
 
 //Document Ready Function
 $(document).ready(function () {
