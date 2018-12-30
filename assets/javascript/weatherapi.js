@@ -25,7 +25,11 @@ $(document).ready(function(){
       firebase.initializeApp(config);
       var database = firebase.database();
     //  event for when a new object is added to the database
-    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+    
+    
+      $(".weather-img").on("click", function(){
+        
+        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
         // Change the HTML to reflect
         var city = snapshot.val().destCity;
         var country = snapshot.val().destCountry;
@@ -37,8 +41,7 @@ $(document).ready(function(){
           
         apiCall(zip,country);
       });
-    
-
+      });
 
 });
 
