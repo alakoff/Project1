@@ -24,7 +24,7 @@
     width: 25%;
 }
 
-.news-img {
+/*.news-img {
     float:left;
     margin-left: 10px;
 }
@@ -37,7 +37,7 @@
 .twitter-img {
     float: left;
     margin-left: 220px;
-}
+}*/
 
 .destination {
     float: right;
@@ -102,4 +102,7 @@
     text-decoration: none;
     cursor: pointer;
 
+}
+.logos{
+    float: left;
 }

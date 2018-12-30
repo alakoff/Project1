@@ -88,9 +88,9 @@ function getRecentDestinations() {
  
          // Create new row and append city,zip and country code
          var row = $("<tr>").append(
-             $("<td>").text(snapshot.val().destCity),
-             $("<td>").text(snapshot.val().destZip),
-             $("<td>").text(snapshot.val().destCountry)
+            $("<td>").attr('class','table-warning').text(snapshot.val().destCity),
+            $("<td>").attr('class','table-info').text(snapshot.val().destZip),
+            $("<td>").attr('class','table-active').text(snapshot.val().destCountry)
          );
  
          //Append row record to destinations table
