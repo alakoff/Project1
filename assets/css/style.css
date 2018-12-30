@@ -5,21 +5,35 @@
     background: white;
 
 }
+
 .hdr-destination-table {
     float: right;
     width: 200px;
     margin-right: 10px;
-    margin-top: -190px;
+    margin-top: -195px;
     border: none;
+    height: 150px;
 }
+
+.colHeader {
+    text-decoration: none;
+    width: 50%;
+}
+
+#destination-table {
+    width: 25%;
+}
+
 .news-img {
     float:left;
     margin-left: 10px;
 }
+
 .weather-img {
     float: left;
     margin-left: 120px;
 }
+
 .twitter-img {
     float: left;
     margin-left: 220px;
@@ -32,6 +46,7 @@
     width: 300px;
 
 }
+
 .news-card {
     float: left;
     margin-left: 10px;
@@ -42,11 +57,49 @@
     float: left;
     margin-left: 10px;
     border: none;
-
 }
+
 .social-card {
     float: left;
     margin-left: 10px;
     border: none;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+    .fa-close {
+        background: lightgray;
+        font-weight: bold;
+        color: red;
+        width: 5%;
+        font-size: 20px;
+}
+
+.close:hover,.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 
 }
