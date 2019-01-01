@@ -41,16 +41,17 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-                <!-- jumbotron -->
-                <div class="jumbotron jumbotron-fluid">
-
+        <!-- jumbotron -->
+        <div class="jumbotron jumbotron-fluid">
+            <!--row starts-->
+            <div class="row">
+                <!--first column-->
+                <div class="col-md-4">
                     <img src="assets/images/travel.jpg" alt="">
-
-                    <!--  Destination input with a search button -->
-
+                </div>
+                <!--first column ends-->
+                <!--  Second column/Destination input with a search button -->
+                <div class="col-md-4">
                     <div class="input-group destination">
 
                         <input type="text" class="form-control input-destination" placeholder="Example Richmond,23237,US">
@@ -60,13 +61,16 @@
                             </button>
                         </div>
                     </div>
-
+                </div>
+                <!--second column ends-->
+                <!--third column-->
+                <div class="col-md-4">
                     <div class="card mb-4 hdr-destination-table">
                         <div class="hdr-table"></div>
                         <div class="card-body">
                             <table class="table table-sm table-hover table-compressed" id='destination-table'>
 
-                                <tr class='recent'>Recent Destinations
+                                <tr class='recent'><span>Recent Destinations</span>
                                     <!-- <th scope="col" class='colHeader'></th> -->
                                 </tr>
                                 </thead>
@@ -81,17 +85,26 @@
                             </table>
                         </div>
                     </div>
-
-                    <h1 class="display-4">Travel Destination Checker</h1>
-
-                    <p class="lead">Traveling? Want to know what's happening around your destination ? Just enter your
-                        destination's city,zip code and country code !</p>
-
                 </div>
+                <!--third column ends-->
+            </div>
+            <!--row ends-->
+
+        </div>
+        <!--Jumbotron ends-->
+        <!--next row-->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="display-4">Travel Destination Checker</h2>
+
+                <p class="lead">Traveling? Want to know what's happening around your destination ? Just enter your
+                    destination's city,zip code and country code !</p>
 
             </div>
 
         </div>
+        <!--row ends-->
+
 
         <!-- Modal -->
         <div id="myModal" class="modal">
@@ -153,7 +166,7 @@
                                     <div class="card-deck" id="fourth"></div>
                                 </div>
 
-                            </div>                           
+                            </div>
                         </div>
                         <!--end of carosel-->
 
@@ -175,13 +188,13 @@
                         <!--  <p class="card-text">Social Articles Here</p> -->
                     </div>
                 </div>
-                
+
                 <div class="card social-card">
                     <div class="card-body social-body">
 
                         <!--Attractions/Events-->
                         <div class="card-columns" id="ticketmaster"></div>
-                        <!--end of attractions/events-->                      
+                        <!--end of attractions/events-->
                     </div>
                 </div>
 
@@ -190,11 +203,11 @@
         </div>
     </div> <!--  Container End -->
 
-  
-     <!-- Javascript link -->
-     <script src="assets/javascript/proj1.js"></script>
-     <script src="assets/javascript/newsapi.js"></script>   
-     <script src="assets/javascript/weatherapi.js"></script>
+
+    <!-- Javascript link -->
+    <script src="assets/javascript/proj1.js"></script>
+    <script src="assets/javascript/newsapi.js"></script>
+    <script src="assets/javascript/weatherapi.js"></script>
 
 
 </body>

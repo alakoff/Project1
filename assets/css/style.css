@@ -10,7 +10,7 @@
     float: right;
     width: 200px;
     margin-right: 10px;
-    margin-top: -195px;
+   /* margin-top: -195px;*/
     border: none;
     height: 150px;
 }
@@ -40,9 +40,9 @@
 }*/
 
 .destination {
-    float: right;
+   /* float: right;*/
     margin-top:90px;
-    margin-right: 350px;
+   /* margin-right: 350px;*/
     width: 300px;
 
 }
@@ -105,4 +105,7 @@
 }
 .logos{
     float: left;
+}
+span{
+    font-weight: bolder;
 }
