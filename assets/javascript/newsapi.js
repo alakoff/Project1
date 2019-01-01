@@ -2,6 +2,15 @@ var message = "Nothing to show";
 //on news image click
 $(".news-img").on("click", function () {
 
+    //Add image border to News icon 
+    $(".news-img").css("border", "2px solid gray");
+
+    //Clear image border from other icons
+    $(".weather-img").css("border", "none");
+    $(".attraction-img").css("border", "none");
+    $(".yelp-img").css("border", "none");
+
+
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
         functionCallAPI(snapshot.val().destCountry, snapshot.val().destCity);
@@ -109,6 +118,14 @@ function callTicketMasterAPI(Country, city, zipcode, state) {
 //on attraction image click
 $(".attraction-img").on("click", function () {
 
+    //Add image border to News icon 
+    $(".attraction-img").css("border", "2px solid gray");
+
+    //Clear image border from other icons
+    $(".weather-img").css("border", "none");
+    $(".news-img").css("border", "none");
+    $(".yelp-img").css("border", "none");
+
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
         callTicketMasterAPI(snapshot.val().destCountry, snapshot.val().destCity, snapshot.val().destZip);
@@ -137,7 +154,8 @@ function ticketmasterListing(response) {
 
         for (var i = 0; i < data.length; i++) {
 
-            outerDiv = $('<div>').attr('class', 'card bg-warning text-white text-center p-3');
+            // outerDiv = $('<div>').attr('class', 'card bg-primary text-center text-white p-3 font-weight-bold');
+            outerDiv = $('<div>').attr('class', 'card bg-primary text-dark text-center font-weight-bold p-3');
             blockquote = $('<blockquote>').attr('class', 'blockquote mb-0');
             pElem = $('<p>').text(data[i].name);
             if (data[i].priceRanges) info = 'Price Ranges:' + data[i].priceRanges[0].min + '-' + data[i].priceRanges[0].max + data[i].priceRanges[0].currency;

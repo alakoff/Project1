@@ -13,21 +13,30 @@ $(document).ready(function(){
         console.log(response);
     });
 };
-    // initializing database
-    var config = {
-        apiKey: "AIzaSyDZk2G8b4OOiN3rW0wDALk0ITxY2UdL0PY",
-        authDomain: "teamwinnersproject1.firebaseapp.com",
-        databaseURL: "https://teamwinnersproject1.firebaseio.com",
-        projectId: "teamwinnersproject1",
-        storageBucket: "teamwinnersproject1.appspot.com",
-        messagingSenderId: "991653674785"
-      };
-      firebase.initializeApp(config);
+    // // initializing database
+    // var config = {
+    //     apiKey: "AIzaSyDZk2G8b4OOiN3rW0wDALk0ITxY2UdL0PY",
+    //     authDomain: "teamwinnersproject1.firebaseapp.com",
+    //     databaseURL: "https://teamwinnersproject1.firebaseio.com",
+    //     projectId: "teamwinnersproject1",
+    //     storageBucket: "teamwinnersproject1.appspot.com",
+    //     messagingSenderId: "991653674785"
+    //   };
+    //   firebase.initializeApp(config);
       var database = firebase.database();
     //  event for when a new object is added to the database
     
     
       $(".weather-img").on("click", function(){
+
+        //Add image border to weather icon 
+        $(".weather-img").css("border", "2px solid gray");
+
+        //Clear image border from other icons
+        $(".news-img").css("border", "none");
+        $(".yelp-img").css("border", "none");
+        $(".attraction-img").css("border", "none");
+
         
         database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
         // Change the HTML to reflect

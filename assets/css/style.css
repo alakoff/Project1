@@ -8,7 +8,7 @@
 
 .hdr-destination-table {
     float: right;
-    width: 200px;
+    width: 250px;
     margin-right: 10px;
     margin-top: -195px;
     border: none;
@@ -21,7 +21,7 @@
 }
 
 #destination-table {
-    width: 25%;
+    width: 35%;
 }
 
 /*.news-img {
@@ -42,8 +42,8 @@
 .destination {
     float: right;
     margin-top:90px;
-    margin-right: 350px;
-    width: 300px;
+    margin-right: 400px;
+    width:25%;
 
 }
 
@@ -65,7 +65,7 @@
     border: none;
 }
 
-/* The Modal (background) */
+/* The Modal background */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -105,4 +105,13 @@
 }
 .logos{
     float: left;
+}
+
+.code-lookup {
+    float: right;
+    margin-top: -50px;
+    margin-right: 415px;
+    color: gray;
+
+
 }

@@ -50,7 +50,7 @@ var constraints = {
             message: "Destination country not valid"
         }
     }
-} //End of validation constraints
+} //End
 
 
 //Function to show error modal if input validation fails
@@ -74,7 +74,47 @@ function showModal(message) {
             $("#myModal").css('display', 'none');
         }
     }
-} //End show modal funtion
+} //End 
+
+
+
+//Function to send data to the database and open News info
+//This is used for when a user clicks on the destinations table
+//with previously searched for destinations. Thefrefore, no data
+//validation is required before sending it to the database
+function sendToDatabase(city,zip,country) {
+
+    db.ref().push({
+        destCity: city,
+        destZip: zip,
+        destCountry: country,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    
+    });
+    
+    //load news feeds from newsAPI on button click
+    // db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+
+    functionCallAPI(country,city);
+    // });
+    
+    
+    //Clear input field
+    $(".input-destination").val("");
+    
+    //Get database info for last 5 destinations and display in table
+    getRecentDestinations();
+    
+    //Add image border to News icon 
+    $(".news-img").css("border", "2px solid gray");
+    
+    //Clear image border from other icons
+    $(".weather-img").css("border", "none");
+    $(".attraction-img").css("border", "none");
+    $(".yelp-img").css("border", "none");
+
+} //End 
+
 
 
 //Function to get recent destinations
@@ -87,10 +127,11 @@ function getRecentDestinations() {
      db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
  
          // Create new row and append city,zip and country code
-         var row = $("<tr>").append(
-            $("<td>").attr('class','table-warning').text(snapshot.val().destCity),
-            $("<td>").attr('class','table-info').text(snapshot.val().destZip),
-            $("<td>").attr('class','table-active').text(snapshot.val().destCountry)
+         var row = $("<tr>");
+         row.append(
+            $("<td>").attr('class','table-warning table-row').text(snapshot.val().destCity),
+            $("<td>").attr('class','table-info table-row').text(snapshot.val().destZip),
+            $("<td>").attr('class','table-active table-row').text(snapshot.val().destCountry)
          );
  
          //Append row record to destinations table
@@ -98,7 +139,7 @@ function getRecentDestinations() {
  
      });
 
-} //End getRecentDestinations
+} //End
 
 
 //Main function
@@ -106,6 +147,23 @@ function main() {
 
     //Get database info for last 5 destinations and display in table
     getRecentDestinations();
+
+
+    //On click function for when user clicks on a previous destination in the table
+    $("#destination-details").on('click','tr',function() {
+
+        var rowData = $(this).children('td').map(function () {
+            return $(this).text();
+        }).get();
+
+        console.log(rowData);
+
+        var city = rowData[0];
+        var zip  = rowData[1];
+        var country = rowData[2];
+
+       sendToDatabase(city,zip,country);
+    });
    
 
     //On click funtion for search button
@@ -156,6 +214,14 @@ function main() {
                 //Get database info for last 5 destinations and display in table
                 getRecentDestinations();
 
+                //Add image border to News icon 
+                $(".news-img").css("border", "2px solid gray");
+
+                //Clear image border from other icons
+                $(".weather-img").css("border", "none");
+                $(".attraction-img").css("border", "none");
+                $(".yelp-img").css("border", "none");
+
 
             } else {
 
@@ -174,11 +240,11 @@ function main() {
 
     }); //End of click function        
 
-} //End of main function
+} //End 
 
 
 //Document Ready Function
 $(document).ready(function () {
     main();
 
-}); //End of document ready function
+}); //End 
