@@ -37,16 +37,20 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <!-- jumbotron -->
+        <div class="jumbotron jumbotron-fluid">
 
-                <!-- jumbotron -->
-                <div class="jumbotron jumbotron-fluid">
+            <!--row starts-->
+            <div class="row">
 
+                <!--first column-->
+                <div class="col-md-4">
                     <img src="assets/images/travel.jpg" alt="">
+                </div>
+                <!--first column ends-->
 
-                    <!--  Destination input with a search button -->
-
+                <!--  Second column/Destination input with a search button -->
+                <div class="col-md-4">
                     <div class="input-group destination">
 
                         <input type="text" class="form-control input-destination" placeholder="Example Richmond,23237,US">
@@ -57,38 +61,51 @@
                         </div>
                     </div>
 
-                    <div class="card mb-4 hdr-destination-table">
-                        <div class="hdr-table"></div>
-                            <div class="card-body">
-                                <table class="table table-sm table-hover table-compressed" id='destination-table'>
-
-                                    <thead>
-                                        Recent Destinations
-                                    </thead>
-
-                                    <tbody id='destination-details'>
-                                    </tbody>
-
-                                </table>
-                            </div>
-                    </div>
-
                     <!-- Div for link to lookup US and world postal codes -->
                     <div>
-                        <a class="code-lookup" href="https://worldpostalcode.com/united-states/" target="_blank">Lookup US and World Postal Codes</a>
+                        <a class="code-lookup" href="https://worldpostalcode.com/united-states/" target="_blank">Lookup
+                            US and World Postal Codes</a>
                     </div>
 
-                    <!-- Header text descriptions -->
-                    <h1 class="display-4">Travel Destination Checker</h1>
-
-                    <p class="lead">Traveling? Want to know what's happening around your destination ? Just enter your
-                        destination's city,zip code and country code !</p>
-
                 </div>
+                <!--second column ends-->
+
+                <!--third column-->
+                <div class="col-md-4">
+                    <div class="card mb-4 hdr-destination-table">
+                        <div class="hdr-table"></div>
+                        <div class="card-body">
+                            <table class="table table-sm table-hover table-compressed" id='destination-table'>
+
+                                <thead>
+                                    <span>Recent Destinations</span>
+                                </thead>
+
+                                <tbody id='destination-details'>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--third column ends-->
 
             </div>
+            <!--row ends-->
 
         </div>
+        <!--Jumbotron ends-->
+
+        <!--next row-->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="display-4">Travel Destination Checker</h2>
+
+                <p class="lead">Traveling? Want to know what's happening around your destination ? Just enter your
+                    destination's city,zip code and country code !</p>
+
+            </div>
+        </div>
+        <!--row ends-->
 
         <!-- Modal -->
         <div id="myModal" class="modal">
@@ -123,7 +140,6 @@
             </div>
         </div>
 
-
         <!-- News Weater Yelp Cards -->
         <div class="row">
             <div class="col-md-12">
@@ -150,7 +166,7 @@
                                     <div class="card-deck" id="fourth"></div>
                                 </div>
 
-                            </div>                           
+                            </div>
                         </div>
                         <!--end of carosel-->
 
@@ -172,13 +188,13 @@
                         <!--  <p class="card-text">Social Articles Here</p> -->
                     </div>
                 </div>
-                
+
                 <div class="card social-card">
                     <div class="card-body social-body">
 
                         <!--Attractions/Events-->
                         <div class="card-columns" id="ticketmaster"></div>
-                        <!--end of attractions/events-->                      
+                        <!--end of attractions/events-->
                     </div>
                 </div>
 
@@ -187,11 +203,10 @@
         </div>
     </div> <!--  Container End -->
 
-  
-     <!-- Javascript link -->
-     <script src="assets/javascript/proj1.js"></script>
-     <script src="assets/javascript/newsapi.js"></script>   
-     <script src="assets/javascript/weatherapi.js"></script>
+    <!-- Javascript link -->
+    <script src="assets/javascript/proj1.js"></script>
+    <script src="assets/javascript/newsapi.js"></script>
+    <script src="assets/javascript/weatherapi.js"></script>
 
 
 </body>

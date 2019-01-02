@@ -7,10 +7,10 @@
 }
 
 .hdr-destination-table {
-    float: right;
+   /* float: right;*/
     width: 250px;
     margin-right: 10px;
-    margin-top: -195px;
+    /*margin-top: -195px;*/
     border: none;
     height: 150px;
 }
@@ -22,6 +22,8 @@
 
 #destination-table {
     width: 35%;
+    cursor: pointer;
+
 }
 
 /*.news-img {
@@ -40,11 +42,11 @@
 }*/
 
 .destination {
-    float: right;
-    margin-top:90px;
-    margin-right: 400px;
-    width:25%;
 
+    margin-top:90px;
+   /* float: right;   
+    margin-right: 400px;
+   /* width:25%;*/
 }
 
 .news-card {
@@ -90,7 +92,7 @@
 
 /* The Close Button */
     .fa-close {
-        background: lightgray;
+       /* background: lightgray;*/
         font-weight: bold;
         color: red;
         width: 5%;
@@ -108,10 +110,13 @@
 }
 
 .code-lookup {
-    float: right;
+   /* float: right;
     margin-top: -50px;
-    margin-right: 415px;
-    color: gray;
+    margin-right: 415px;*/
+   color: gray;
 
 
+}
+span{
+    font-weight: bolder;
 }
