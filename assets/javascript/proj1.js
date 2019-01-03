@@ -13,10 +13,14 @@ var config = {
 //Initialize Firebase Appliction
 firebase.initializeApp(config);
 
-
 //Create database reference variable
 var db = firebase.database();
 
+//Global Variables declaration for All APIs
+var GlobalCountry;
+var GlobalCity;
+var Globalzip;
+var message = "No Macthing Results Found";
 
 //Validate.js constraints
 var constraints = {
@@ -82,62 +86,61 @@ function showModal(message) {
 //This is used for when a user clicks on the destinations table
 //with previously searched for destinations. Thefrefore, no data
 //validation is required before sending it to the database
-function sendToDatabase(city,zip,country) {
+/*function sendToDatabase(city, zip, country) {
 
     db.ref().push({
         destCity: city,
         destZip: zip,
         destCountry: country,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
-    
-    });
-    
-    //load news feeds from newsAPI on button click
-    // db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
-    functionCallAPI(country,city);
-    // });
-    
-    
+    });
+    //initilize global variabls after database push 
+    GlobalCity =city;
+    GlobalCountry =country;
+    Globalzip =zip;
+
+    //load news feeds from newsAPI on button click   
+    //using global variables to call newsAPI after new record insertion
+    functionCallAPI(GlobalCountry, GlobalCity);
+
     //Clear input field
     $(".input-destination").val("");
-    
+
     //Get database info for last 5 destinations and display in table
     getRecentDestinations();
-    
+
     //Add image border to News icon 
     $(".news-img").css("border", "2px solid gray");
-    
+
     //Clear image border from other icons
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
 
-} //End 
-
-
+} //End */
 
 //Function to get recent destinations
 function getRecentDestinations() {
 
-     //Clear current destination details
-     $("#destination-details").empty();
+    //Clear current destination details
+    $("#destination-details").empty();
 
-     //Get last 5 destinations from the database
-     db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
- 
-         // Create new row and append city,zip and country code
-         var row = $("<tr>");
-         row.append(
-            $("<td>").attr('class','table-warning table-row').text(snapshot.val().destCity),
-            $("<td>").attr('class','table-info table-row').text(snapshot.val().destZip),
-            $("<td>").attr('class','table-active table-row').text(snapshot.val().destCountry)
-         );
- 
-         //Append row record to destinations table
-         $("#destination-details").append(row);
- 
-     });
+    //Get last 5 destinations from the database
+    db.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
+
+        // Create new row and append city,zip and country code
+        var row = $("<tr>");
+        row.append(
+            $("<td>").attr('class', 'table-warning table-row').text(snapshot.val().destCity),
+            $("<td>").attr('class', 'table-info table-row').text(snapshot.val().destZip),
+            $("<td>").attr('class', 'table-active table-row').text(snapshot.val().destCountry)
+        );
+
+        //Append row record to destinations table
+        $("#destination-details").append(row);
+
+    });
 
 } //End
 
@@ -150,7 +153,7 @@ function main() {
 
 
     //On click function for when user clicks on a previous destination in the table
-    $("#destination-details").on('click','tr',function() {
+    $("#destination-details").on('click', 'tr', function () {
 
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
@@ -158,13 +161,22 @@ function main() {
 
         console.log(rowData);
 
-        var city = rowData[0];
-        var zip  = rowData[1];
-        var country = rowData[2];
+        //initialize global varilables on destination table row click
+        GlobalCity = rowData[0];
+        Globalzip = rowData[1];
+        GlobalCountry = rowData[2];
+        //Add image border to News icon 
+        $(".news-img").css("border", "3px solid grey");
 
-       sendToDatabase(city,zip,country);
+        //Clear image border from other icons
+        $(".weather-img").css("border", "none");
+        $(".attraction-img").css("border", "none");
+        $(".yelp-img").css("border", "none");
+
+        //call newsAPI on destination row click with global variables;
+        functionCallAPI(GlobalCountry, GlobalCity);
     });
-   
+
 
     //On click funtion for search button
     $(".btn-secondary").click(function () {
@@ -185,7 +197,7 @@ function main() {
             var destCountry = destArray[2];
 
 
-            var err = validate({destCity,destZip,destCountry}, constraints);
+            var err = validate({ destCity, destZip, destCountry }, constraints);
 
             console.log(err);
 
@@ -201,12 +213,14 @@ function main() {
 
                 });
 
-                 //load news feeds from newsAPI on button click
-                 db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+                //initialize global variables
+                GlobalCountry = destCountry;
+                GlobalCity = destCity;
+                Globalzip = destZip;
 
-                    functionCallAPI(snapshot.val().destCountry,snapshot.val().destCity);
-                });
-
+                //load news feeds from newsAPI on button click
+                //using global variables                         
+                functionCallAPI(GlobalCountry, GlobalCity);
 
                 //Clear input field
                 $(".input-destination").val("");
@@ -215,7 +229,7 @@ function main() {
                 getRecentDestinations();
 
                 //Add image border to News icon 
-                $(".news-img").css("border", "2px solid gray");
+                $(".news-img").css("border", "3px solid grey");
 
                 //Clear image border from other icons
                 $(".weather-img").css("border", "none");
