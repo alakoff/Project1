@@ -1,56 +1,48 @@
-$(document).ready(function(){
-   
-   
-   function apiCall(zip,country){
-    // var zip = zip;
-    // var country= country; 
-    var url= "http://api.openweathermap.org/data/2.5/weather?zip="+zip+","+country+"&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
+
+function apiCall(zip, country) {
+
+    var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
     // console.log(url);
-        $.ajax({
+    $.ajax({
         url: url,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response);
+        displayWeather(response);
     });
-};
-    // // initializing database
-    // var config = {
-    //     apiKey: "AIzaSyDZk2G8b4OOiN3rW0wDALk0ITxY2UdL0PY",
-    //     authDomain: "teamwinnersproject1.firebaseapp.com",
-    //     databaseURL: "https://teamwinnersproject1.firebaseio.com",
-    //     projectId: "teamwinnersproject1",
-    //     storageBucket: "teamwinnersproject1.appspot.com",
-    //     messagingSenderId: "991653674785"
-    //   };
-    //   firebase.initializeApp(config);
-      var database = firebase.database();
-    //  event for when a new object is added to the database
-    
-    
-      $(".weather-img").on("click", function(){
+}
+//  event for when a new object is added to the database
+$(".weather-img").on("click", function () {
 
-        //Add image border to weather icon 
-        $(".weather-img").css("border", "2px solid gray");
+    //Add image border to weather icon 
+    $(".weather-img").css("border", "3px solid grey");
 
-        //Clear image border from other icons
-        $(".news-img").css("border", "none");
-        $(".yelp-img").css("border", "none");
-        $(".attraction-img").css("border", "none");
+    //Clear image border from other icons
+    $(".news-img").css("border", "none");
+    $(".yelp-img").css("border", "none");
+    $(".attraction-img").css("border", "none");
 
-        
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-        // Change the HTML to reflect
-        var city = snapshot.val().destCity;
-        var country = snapshot.val().destCountry;
-        var zip = snapshot.val().destZip;
-
-        console.log(city);
-        console.log(country);
-        console.log(zip);
-          
-        apiCall(zip,country);
-      });
-      });
-
+    if (!Globalzip) {
+        db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+            
+            GlobalCity = snapshot.val().destCity;
+            GlobalCountry = snapshot.val().destCountry;
+            Globalzip = snapshot.val().destZip;
+            apiCall(Globalzip, GlobalCountry);
+        });
+    }
+    else
+        apiCall(Globalzip, GlobalCountry);
 });
+
+function displayWeather(response){
+    //clear the div
+    $('#first').empty();
+    $('#second').empty();
+    $('#third').empty();
+    $('#fourth').empty();
+    $('#ticketmaster').empty();
+    $('.weatherbody').text('City :' +response.name+',Humidity:'+response.main.humidity+', Current Temperature:'+response.main.temp+', Maximum Temp:'+response.main.temp_max+', Minimum Temp:'+response.main.temp_min);
+
+}
 
