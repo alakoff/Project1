@@ -165,13 +165,14 @@ function main() {
         GlobalCity = rowData[0];
         Globalzip = rowData[1];
         GlobalCountry = rowData[2];
+
         //Add image border to News icon 
         $(".news-img").css("border", "3px solid grey");
 
         //Clear image border from other icons
         $(".weather-img").css("border", "none");
         $(".attraction-img").css("border", "none");
-        $(".yelp-img").css("border", "none");
+        $(".zomato-img").css("border", "none");
 
         //call newsAPI on destination row click with global variables;
         functionCallAPI(GlobalCountry, GlobalCity);
@@ -234,7 +235,7 @@ function main() {
                 //Clear image border from other icons
                 $(".weather-img").css("border", "none");
                 $(".attraction-img").css("border", "none");
-                $(".yelp-img").css("border", "none");
+                $(".zomato-img").css("border", "none");
 
 
             } else {
