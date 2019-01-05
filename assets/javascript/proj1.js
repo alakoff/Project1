@@ -154,7 +154,7 @@ function main() {
 
     //On click function for when user clicks on a previous destination in the table
     $("#destination-details").on('click', 'tr', function () {
-
+        $("#card12").hide();
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
         }).get();
