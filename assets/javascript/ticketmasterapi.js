@@ -62,6 +62,7 @@ function ticketmasterListing(response) {
     $('#third').empty();
     $('#fourth').empty();
     $('#ticketmaster').empty();
+    $('.weatherbody').empty();
     if (response.page.totalElements) {
 
         var data = response._embedded.events;
