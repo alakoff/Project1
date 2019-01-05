@@ -8,7 +8,6 @@ $(".news-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
-    $("#card12").hide();
 
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
