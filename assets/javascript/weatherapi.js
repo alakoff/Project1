@@ -1,7 +1,7 @@
 
 function apiCall(zip, country) {
 
-    var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
+    var url = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
     // console.log(url);
     $.ajax({
         url: url,
