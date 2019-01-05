@@ -11,8 +11,6 @@ function apiCall(zip, country) {
         displayWeather(response);
     });
 }
-
-$("#card12").hide();
 //  event for when a new object is added to the database
 $(".weather-img").on("click", function () {
 
@@ -23,10 +21,10 @@ $(".weather-img").on("click", function () {
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
     $(".attraction-img").css("border", "none");
-    $("#card12").show();
+
     if (!Globalzip) {
         db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
-            
+
             GlobalCity = snapshot.val().destCity;
             GlobalCountry = snapshot.val().destCountry;
             Globalzip = snapshot.val().destZip;
@@ -37,7 +35,7 @@ $(".weather-img").on("click", function () {
         apiCall(Globalzip, GlobalCountry);
 });
 
-function displayWeather(response){
+function displayWeather(response) {
     //clear the div
     $('#first').empty();
     $('#second').empty();
@@ -46,11 +44,21 @@ function displayWeather(response){
     $('#ticketmaster').empty();
 
 
-    $("#destination").text(response.name+", "+response.sys.country);
-    $("#description").text(response.weather[0].description);
-    $("#humidity").text("Humidity: "+response.main.humidity);
-    $("#temp").text("Temperature: "+response.main.temp);
-    $("#temp-max").text("Max temp: "+response.main.temp_max);
-    $("#temp-min").text("Min temp: "+response.main.temp_min);
+    var newDiv = $('<div>').attr('class', 'card').css('width','18rem');
+    var newDiv_body = $('<div>').attr('class', 'card-body');
+    var heading = $('<h5>').attr('class', 'card-title').text('Current Weather');
+    newDiv_body.append(heading);
+
+    var ulElem = $('<ul>').attr('class', 'list-group list-group-flush');
+    var liElem1 = $('<li>').attr('class', 'list-group-item').text(response.name + ", " + response.sys.country);
+    var liElem2 = $('<li>').attr('class', 'list-group-item').text(response.weather[0].description);
+    var liElem3 = $('<li>').attr('class', 'list-group-item').text("Humidity: " + response.main.humidity);
+    var liElem4 = $('<li>').attr('class', 'list-group-item').text("Temperature: " + response.main.temp);
+    var liElem5 = $('<li>').attr('class', 'list-group-item').text("Max temp: " + response.main.temp_max);
+    var liElem6 = $('<li>').attr('class', 'list-group-item').text("Min temp: " + response.main.temp_min);
+
+    ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
+    newDiv.append(newDiv_body, ulElem);
+    $('.weatherbody').append(newDiv);
 }
 
