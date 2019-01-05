@@ -106,3 +106,8 @@
 .logos{
     float: left;
 }
+
+/* weather */
+#weather{
+    display: none;
+}
