@@ -2,139 +2,212 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Check Your Destination</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trave Destination</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Bootstrap link -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-  <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-  <!-- Moment.js link -->
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Moment.js link -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-  <!-- CSS file link -->
-  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- Validate.js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
 
-  <!-- Javascript link -->
-  <script src="assets/javascript/proj1.js"></script>
+
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS file link -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
 </head>
 
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <!-- jumbotron -->
+        <div class="jumbotron jumbotron-fluid">
 
-                <!-- jumbotron -->
-                <div class="jumbotron jumbotron-fluid">
+            <!--row starts-->
+            <div class="row">
 
+                <!--first column-->
+                <div class="col-md-4">
                     <img src="assets/images/travel.jpg" alt="">
-
-                    <!--  Destination input with a search button -->
-                      <div class="input-group destination">
-                        <input type="text" class="form-control input-destination" placeholder="Enter your destination">
-                        <div class="input-group-append">
-                          <button class="btn btn-secondary" type="button">
-                            <i class="fa fa-search"></i>
-                          </button>
-                        </div>
-                      </div>
-
-                      <div class="card mb-4 hdr-destination-table">
-                        <div class="hdr-table"></div>
-                            <div class="card-body">
-                              <table class="table table-sm table-hover table-compressed" id='destination-table'>
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Destinations</th>
-                                  </tr>
-                                </thead>
-                                <tbody id="destination-details" >
-                                </tbody>
-                              </table>
-                          </div>
-                      </div>
-
-                    <h1 class="display-4">Travel Destination Checker</h1>
-                    <p class="lead">Traveling? Want to know what's happening around your destination ?  Just enter your destination above !</p>
-                    
                 </div>
+                <!--first column ends-->
+
+                <!--  Second column/Destination input with a search button -->
+                <div class="col-md-4">
+                    <div class="input-group destination">
+
+                        <input type="text" class="form-control input-destination" placeholder="Example Richmond,23237,US">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Div for link to lookup US and world postal codes -->
+                    <div>
+                        <a class="code-lookup" href="https://worldpostalcode.com/united-states/" target="_blank">Lookup
+                            US and World Postal Codes</a>
+                    </div>
+
+                </div>
+                <!--second column ends-->
+
+                <!--third column-->
+                <div class="col-md-4">
+                    <div class="card mb-4 hdr-destination-table">
+                        <div class="hdr-table"></div>
+                        <div class="card-body">
+                            <table class="table table-sm table-hover table-compressed" id='destination-table'>
+
+                                <thead>
+                                    <span>Recent Destinations</span>
+                                </thead>
+
+                                <tbody id='destination-details'>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--third column ends-->
+
             </div>
+            <!--row ends-->
+
         </div>
+        <!--Jumbotron ends-->
 
-
-        <!-- News Weather Social images -->
+        <!--next row-->
         <div class="row">
             <div class="col-md-12">
+                <h2 class="display-4">Travel Destination Checker</h2>
 
-                <div class="images">
-                    <div class="">
-                        <img class="news-img" src="assets/images/news.jpg" height=100 width=150>
-                    </div>
-                    <div class="">
+                <p class="lead">Traveling? Want to know what's happening around your destination ? Just enter your
+                    destination's city,zip code and country code !</p>
 
+            </div>
+        </div>
+        <!--row ends-->
 
-                    <img class="weather-img" src="assets/images/weather.png"  height=100 width=150>
-                    </div>
-                    <div class="">
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">
+                    <i class="fa fa-close"></i>
+                </span>
+                <p class="modal-text"></p>
+            </div>
+        </div>
 
+        <!-- News Weather Yelp Images -->
+        <div class="row">
+            <div class="col-md-12 images">
 
-                    <img class="twitter-img" src="assets/images/twitter.png" height=100 width=150>
-                    </div>
+                <div class="col-md-3 logos">
+                    <img class="news-img" src="assets/images/news.jpg" height=100 width=150>
+                </div>
+                <div class="col-md-3 logos">
 
+                    <img class="weather-img" src="assets/images/weather.png" height=100 width=150>
+
+                </div>
+                <div class="col-md-3 logos">
+                    <img class="twitter-img" src="assets/images/yelp.png" height=100 width=150>
+                </div>
+                <div class="col-md-3 logos">
+                    <img class="attraction-img" src="assets/images/active-attractions-logo-stack-w.png" height=100
+                        width=150>
                 </div>
             </div>
         </div>
 
-
-        <!-- News Weater Social Cards -->
+        <!-- News Weater Yelp Cards -->
         <div class="row">
             <div class="col-md-12">
                 <!-- News Card -->
-                <div class="card news-card" style="width: 250px;">
+                <div class="card news-card">
 
-                      <div class="card-body news-body">
-                          <p class="card-text">News Articles Here</p>
-                      </div>
+                    <div class="card-body news-body">
+
+                        <!--news api data listing in carousel-->
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+                                    <div class="card-deck" id="first"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="second"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="third"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="fourth"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end of carosel-->
+
+                    </div>
                 </div>
 
                 <!-- Weather Card -->
-                <div class="card weather-card" style="width: 350px;">
-
-                      <div class="card-body weather-body">
-                        <p class="card-text">Weather Articles Here</p>
-                      </div>
+                <div class="card weather-card">
+                    <div class="card-body weatherbody"></div>
                 </div>
 
-                <!-- Social Card -->
+                <!-- Yelp  Card -->
                 <div class="card social-card" style="width: 350px;">
 
-                      <div class="card-body social-body">
-                        <p class="card-text">Social Articles Here</p>
-                      </div>
+                    <div class="card-body social-body">
+                        <!--  <p class="card-text">Social Articles Here</p> -->
+                    </div>
+                </div>
+
+                <div class="card social-card">
+                    <div class="card-body social-body">
+
+                        <!--Attractions/Events-->
+                        <div class="card-columns" id="ticketmaster"></div>
+                        <!--end of attractions/events-->
+                    </div>
                 </div>
 
             </div>
 
         </div>
 
+    </div> <!--  Container End -->
 
+    <!-- Javascript link -->
+    <script src="assets/javascript/proj1.js"></script>
+    <script src="assets/javascript/newsapi.js"></script>
+    <script src="assets/javascript/ticketmasterapi.js"></script>
+    <script src="assets/javascript/weatherapi.js"></script>
 
-
-
-
-    </div>  <!--  Container End -->
 
 </body>
 
