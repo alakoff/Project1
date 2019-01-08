@@ -7,7 +7,7 @@ $(".news-img").on("click", function () {
     //Clear image border from other icons
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
-    $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
 
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -87,10 +87,14 @@ function drycode(response) {
 
             else if ((i >= 10) && (i < 15))
                 $('#third').append(newDiv);
+                
             else
                 $('#fourth').append(newDiv);
 
-        }
+            
+
+        }  //End For Loop
+
     } else {
         $('.news-body').append(message);
 

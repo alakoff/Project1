@@ -19,7 +19,7 @@ $(".weather-img").on("click", function () {
 
     //Clear image border from other icons
     $(".news-img").css("border", "none");
-    $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
     $(".attraction-img").css("border", "none");
 
     if (!Globalzip) {

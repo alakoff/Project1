@@ -30,7 +30,7 @@ $(".attraction-img").on("click", function () {
     //Clear image border from other icons
     $(".weather-img").css("border", "none");
     $(".news-img").css("border", "none");
-    $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
    
     if(!GlobalCity){
 

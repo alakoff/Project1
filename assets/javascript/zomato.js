@@ -1,35 +1,142 @@
-//Function to call Yelp API and ruturn data
-function getZomato(city) {
-    
-    //API Info
-    var apiKey = '3eb53b3f118fbce4d5ae9dd7555849b3';
-    var queryURL = 'https://developers.zomato.com/api/v2.1/search?entity_type=city&q='+city+'&count=10&radius=5000';
+//This file is used for Zomato API processing
 
-    // curl -X GET --header "Accept: application/json" --header "user-key: 3eb53b3f118fbce4d5ae9dd7555849b3" "https://developers.zomato.com/api/v2.1/search?entity_type=city&q=New%20York&count=10&radius=5000"
-   
-    //Make AJAX call using query URL and api key for data based on the location
+//Function to get Zomato city id 
+function getZomatoData(url,key) {
+
+    //Make AJAX call using query URL and api key for destination city id
     $.ajax({
 
-        url: queryURL,
+        url: url,
         headers: {
-            'Accept':'application/json',
-            'user-key':apiKey
+            'user-key':key
         },
         method: "GET"
 
-    }).then(function (response) {
+    }).then(function (res) {
 
-        //Test console log the response
-        console.log(response);
+        //If function returns a valid city id 
+        if (res.location_suggestions[0].city_id) {
 
-    });
+            var cityID = res.location_suggestions[0].city_id;
+            
+            //Restuarant query string using city id 
+            var queryRest = 'https://developers.zomato.com/api/v2.1/search?&entity_id='+cityID+'&entity_type=city&count=20&radius=16000';
+
+            //Call function to get the list of restaurants based on the city id
+            getRestaurants(queryRest,key);
+
+        }
+
+    })
+
+}  //End
+
+
+
+//Function to get Zomato restaurants
+function getRestaurants(url,key) {
+
+    //Make AJAX call using query URL and api key for restaurants
+    $.ajax({
+
+        url: url,
+        headers: {
+            'user-key':key
+        },
+        method: "GET"
+
+    }).then(function (res) {
+
+        //Call fuction to display restuarant data returned
+        displayZomato(res);
+ 
+    })
+
+}  //End
+
+
+//Function for Zomato
+function zomato(city) {
+    
+    //API Info
+    var apiKey = '3eb53b3f118fbce4d5ae9dd7555849b3';
+    
+    //City ID query string to get city id needed for restaurant query
+    var queryCity = 'https://developers.zomato.com/api/v2.1/locations?query='+city+'&count=1';
+
+    //Call function to get Zomato restaurant data
+    getZomatoData(queryCity,apiKey);
 
 } //End 
 
 
-//Function to display Yelp API data
-function displayZomato() {
-}  //End
+//Function to display Zomato API data
+function displayZomato(res) {
+
+    //Declare variables used for display
+    var newDiv;
+    var image;
+    var newbody;
+    var otherElem1;
+    var otherElem2;
+    var otherElem3;
+    var otherElem4;
+    var otherElem5;
+
+    //Clear the other divs
+    $('#first').empty();
+    $('#second').empty();
+    $('#third').empty();
+    $('#fourth').empty();
+    $('#ticketmaster').empty();
+    $('.weatherbody').empty();
+
+
+    //Get and format 20 restaurants from Zomato API
+
+    console.log(res);
+
+    //if response array length is greater than zero
+    if (parseInt(res.results_found)>0) {
+
+        //Loop through the first 20 results
+        for (i = 0; i < 20; i++) {
+
+            newDiv = $('<div>').attr('class', 'card');
+            // image = $('<img>').attr('src', res.articles[i].urlToImage).attr('class', 'card-img-top');
+            // newDiv.append(image);
+
+            newbody = $('<div>').attr('class', 'card-body');
+            otherElem1 = $('<h5>').text(res.restaurants[i].restaurant.name).attr('class', 'card-title');
+            otherElem2 = $('<p>').text(res.restaurants[i].restaurant.cuisines).attr('class', 'card-text');
+            otherElem3 = $('<p>').text(res.restaurants[i].restaurant.currency).attr('class', 'card-text');
+            otherElem4 = $('<p>').text(res.restaurants[i].restaurant.user_rating.aggregate_rating).attr('class', 'card-text');
+            otherElem5 = $('<a>').text('Menu').attr('href', res.restaurants[i].restaurant.menu_url).attr('class', 'btn btn-primary').attr('target', '_blank');
+            newbody.append(otherElem1, otherElem2, otherElem3, otherElem4, otherElem5);
+            newDiv.append(newbody);
+
+            //for carousel
+            if (i < 5)
+                $('#first').append(newDiv);
+
+            else if ((i >= 5) && (i < 10))
+                $('#second').append(newDiv);
+
+            else if ((i >= 10) && (i < 15))
+                $('#third').append(newDiv);
+            else
+                $('#fourth').append(newDiv);
+
+        }
+
+    } else {
+
+        //Display "No Results" message
+        $('.zomato-body').append(message);
+
+    }
+
+}  //End 
 
 
 
@@ -42,9 +149,6 @@ function main1() {
     //On click function for the Zomato image
     $(".zomato-img").click(function(){
 
-        //Test console.log
-        console.log("click on Zomato image");
-
         //Add image border to Zomato icon 
         $(".zomato-img").css("border", "3px solid gray");
 
@@ -53,7 +157,7 @@ function main1() {
         $(".weather-img").css("border", "none");
         $(".attraction-img").css("border", "none");
 
-        //If no global variable defined yet, use last record in database
+        //If no global city variable defined yet, use last record in database
         if (!GlobalCity) {
 
             //Query database for the last record to get values
@@ -67,11 +171,8 @@ function main1() {
             })
         }
             
-        //using global variables to call yelp API
-        getZomato(GlobalCity);
-
-        //Call function to display the yelp data
-        displayZomato();
+        //using global city variable to start Zomato API process
+        zomato(GlobalCity);
           
       });
 

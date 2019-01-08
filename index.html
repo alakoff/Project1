@@ -13,6 +13,8 @@
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -117,7 +119,7 @@
             </div>
         </div>
 
-        <!-- News Weather Yelp Images -->
+        <!-- News Weather Restaurant Attraction Images -->
         <div class="row">
             <div class="col-md-12 images">
 
@@ -139,9 +141,10 @@
             </div>
         </div>
 
-        <!-- News Weater Restaurant Attraction Cards -->
+        <!-- News Weather Restaurant Attraction Cards -->
         <div class="row">
             <div class="col-md-12">
+
                 <!-- News Card -->
                 <div class="card news-card">
 
@@ -182,26 +185,52 @@
                     </div>
                 </div>
 
-                <!-- Restaurant  Card -->
-                <div class="card social-card" style="width: 350px;">
-
+                <!-- Restaurant  Cards -->
+                <div class="card social-card">
                     <div class="card-body social-body">
-                        <!--  <p class="card-text">Social Articles Here</p> -->
-                    </div>
-                </div>
 
+                        <!--Zomato api data listing in carousel-->
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+                                    <div class="card-deck" id="first"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="second"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="third"></div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card-deck" id="fourth"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--end of carosel-->
+
+                    </div>
+                </div> <!-- End of restaurant card -->
+
+
+                <!--Attractions/Events-->
                 <div class="card social-card">
                     <div class="card-body social-body">
 
                         <!--Attractions/Events-->
                         <div class="card-columns" id="ticketmaster"></div>
                         <!--end of attractions/events-->
+
                     </div>
                 </div>
+                <!--end of attractions/events-->
+                    
 
-            </div>
+            </div>  <!-- End of column -->
 
-        </div>
+        </div>  <!-- End of Row -->
 
     </div> <!--  Container End -->
 

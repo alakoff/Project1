@@ -7,10 +7,8 @@
 }
 
 .hdr-destination-table {
-   /* float: right;*/
     width: 250px;
     margin-right: 10px;
-    /*margin-top: -195px;*/
     border: none;
     height: 150px;
 }
@@ -21,40 +19,23 @@
 }
 
 #destination-table {
-    /*width: 35%;*/
     cursor: pointer;
-
 }
 
-/*.news-img {
-    float:left;
-    margin-left: 10px;
+.news-img,.weather-img,.zomato-img,.attraction-img {
+    cursor:pointer;
 }
-
-.weather-img {
-    float: left;
-    margin-left: 120px;
-}
-
-.twitter-img {
-    float: left;
-    margin-left: 220px;
-}*/
 
 .destination {
-
     margin-top:90px;
-   /* float: right;   
-    margin-right: 400px;
-   /* width:25%;*/
 }
 
 .news-card {
     float: left;
     margin-left: 10px;
     border: none;
-
 }
+
 .weather-card {
     float: left;
     margin-left: 10px;
@@ -92,7 +73,6 @@
 
 /* The Close Button */
     .fa-close {
-       /* background: lightgray;*/
         font-weight: bold;
         color: red;
         width: 5%;
@@ -103,20 +83,21 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-
 }
+
 .logos{
     float: left;
 }
 
 .code-lookup {
-   /* float: right;
-    margin-top: -50px;
-    margin-right: 415px;*/
    color: gray;
-
-
 }
+
 span{
     font-weight: bolder;
 }
+.carousel-inner .carousel-item {
+    transition: -webkit-transform 15s ease;
+    transition: transform 15s ease;
+    transition: transform 15s ease, -webkit-transform 15s ease;
+  }

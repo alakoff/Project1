@@ -20,7 +20,7 @@ var db = firebase.database();
 var GlobalCountry;
 var GlobalCity;
 var Globalzip;
-var message = "No Macthing Results Found";
+var message = "No Matching Results Found";
 
 //Validate.js constraints
 var constraints = {
@@ -147,6 +147,9 @@ function getRecentDestinations() {
 
 //Main function
 function main() {
+    
+    //Control Bootstratp carousel speed
+    jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 5000  // 10 seconds
 
     //Get database info for last 5 destinations and display in table
     getRecentDestinations();
@@ -249,7 +252,7 @@ function main() {
         } else {
 
             //Input is not entered, prompt to enter input
-            showModal('Please enter you destination city, zip code and country code!');
+            showModal('Please enter the destination city, zip code and country code! Or click on a recent destination.');
 
         }
 
