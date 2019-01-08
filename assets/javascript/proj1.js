@@ -20,7 +20,7 @@ var db = firebase.database();
 var GlobalCountry;
 var GlobalCity;
 var Globalzip;
-var message = "No Matching Results Found";
+var message = "No Macthing Results Found";
 
 //Validate.js constraints
 var constraints = {
@@ -147,9 +147,6 @@ function getRecentDestinations() {
 
 //Main function
 function main() {
-    
-    //Control Bootstratp carousel speed
-    jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 5000  // 10 seconds
 
     //Get database info for last 5 destinations and display in table
     getRecentDestinations();
@@ -157,7 +154,7 @@ function main() {
 
     //On click function for when user clicks on a previous destination in the table
     $("#destination-details").on('click', 'tr', function () {
-
+        $("#card12").hide();
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
         }).get();
@@ -168,14 +165,13 @@ function main() {
         GlobalCity = rowData[0];
         Globalzip = rowData[1];
         GlobalCountry = rowData[2];
-
         //Add image border to News icon 
         $(".news-img").css("border", "3px solid grey");
 
         //Clear image border from other icons
         $(".weather-img").css("border", "none");
         $(".attraction-img").css("border", "none");
-        $(".zomato-img").css("border", "none");
+        $(".yelp-img").css("border", "none");
 
         //call newsAPI on destination row click with global variables;
         functionCallAPI(GlobalCountry, GlobalCity);
@@ -238,7 +234,7 @@ function main() {
                 //Clear image border from other icons
                 $(".weather-img").css("border", "none");
                 $(".attraction-img").css("border", "none");
-                $(".zomato-img").css("border", "none");
+                $(".yelp-img").css("border", "none");
 
 
             } else {
@@ -252,7 +248,7 @@ function main() {
         } else {
 
             //Input is not entered, prompt to enter input
-            showModal('Please enter the destination city, zip code and country code! Or click on a recent destination.');
+            showModal('Please enter you destination city, zip code and country code!');
 
         }
 

@@ -1,6 +1,6 @@
 //This file is used for Zomato API processing
 
-//Function to get Zomato city id 
+//Function to get Zomato city id git
 function getZomatoData(url,key) {
 
     //Make AJAX call using query URL and api key for destination city id

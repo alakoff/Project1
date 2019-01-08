@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -119,7 +119,7 @@
             </div>
         </div>
 
-        <!-- News Weather Restaurant Attraction Images -->
+        <!-- News Weather Yelp Images -->
         <div class="row">
             <div class="col-md-12 images">
 
@@ -132,7 +132,7 @@
 
                 </div>
                 <div class="col-md-3 logos">
-                    <img class="zomato-img" src="assets/images/zomato.jpg" height=100 width=150>
+                    <img class="twitter-img" src="assets/images/yelp.png" height=100 width=150>
                 </div>
                 <div class="col-md-3 logos">
                     <img class="attraction-img" src="assets/images/active-attractions-logo-stack-w.png" height=100
@@ -141,10 +141,9 @@
             </div>
         </div>
 
-        <!-- News Weather Restaurant Attraction Cards -->
+        <!-- News Weater Yelp Cards -->
         <div class="row">
             <div class="col-md-12">
-
                 <!-- News Card -->
                 <div class="card news-card">
 
@@ -177,60 +176,29 @@
 
                 <!-- Weather Card -->
                 <div class="card weather-card">
+                    <div class="card-body weatherbody"></div>
+                </div>
 
-                    <div class="card-body weather-body">
+                <!-- Yelp  Card -->
+                <div class="card social-card" style="width: 350px;">
 
-                         <p class="card-text weatherbody"></p>
-
+                    <div class="card-body social-body">
+                        <!--  <p class="card-text">Social Articles Here</p> -->
                     </div>
                 </div>
 
-                <!-- Restaurant  Cards -->
-                <div class="card social-card">
-                    <div class="card-body social-body">
-
-                        <!--Zomato api data listing in carousel-->
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active">
-                                    <div class="card-deck" id="first"></div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card-deck" id="second"></div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card-deck" id="third"></div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card-deck" id="fourth"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!--end of carosel-->
-
-                    </div>
-                </div> <!-- End of restaurant card -->
-
-
-                <!--Attractions/Events-->
                 <div class="card social-card">
                     <div class="card-body social-body">
 
                         <!--Attractions/Events-->
                         <div class="card-columns" id="ticketmaster"></div>
                         <!--end of attractions/events-->
-
                     </div>
                 </div>
-                <!--end of attractions/events-->
-                    
 
-            </div>  <!-- End of column -->
+            </div>
 
-        </div>  <!-- End of Row -->
+        </div>
 
     </div> <!--  Container End -->
 
@@ -239,7 +207,6 @@
     <script src="assets/javascript/newsapi.js"></script>
     <script src="assets/javascript/ticketmasterapi.js"></script>
     <script src="assets/javascript/weatherapi.js"></script>
-    <script src="assets/javascript/zomato.js"></script>
 
 
 </body>
