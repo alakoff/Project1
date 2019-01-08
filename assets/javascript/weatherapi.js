@@ -5,12 +5,32 @@ function apiCall(zip, country) {
     // console.log(url);
     $.ajax({
         url: url,
-        method: "GET"
+        method: "GET",
+        error: function(xhr, status, error){
+            
+            //clear the divs
+            $('#first').empty();
+            $('#second').empty();
+            $('#third').empty();
+            $('#fourth').empty();
+            $('#ticketmaster').empty();
+            $('.zomato-body').empty();
+
+            //Create error message
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+
+            //Add error message to weather body
+           $(".weatherbody").text(errorMessage);
+        }
+
     }).then(function (response) {
         console.log(response);
         displayWeather(response);
-    });
+        
+    })
+    
 }
+
 //  event for when a new object is added to the database
 $(".weather-img").on("click", function () {
 
@@ -20,6 +40,7 @@ $(".weather-img").on("click", function () {
     //Clear image border from other icons
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
     $(".attraction-img").css("border", "none");
 
     if (!Globalzip) {
@@ -36,13 +57,14 @@ $(".weather-img").on("click", function () {
 });
 
 function displayWeather(response) {
+
     //clear the div
     $('#first').empty();
     $('#second').empty();
     $('#third').empty();
     $('#fourth').empty();
     $('#ticketmaster').empty();
-
+    $('.zomato-body').empty();
 
     var newDiv = $('<div>').attr('class', 'card').css('width','18rem');
     var newDiv_body = $('<div>').attr('class', 'card-body');
@@ -60,5 +82,5 @@ function displayWeather(response) {
     ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
     newDiv.append(newDiv_body, ulElem);
     $('.weatherbody').append(newDiv);
-}
 
+}

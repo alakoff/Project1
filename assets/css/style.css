@@ -7,10 +7,8 @@
 }
 
 .hdr-destination-table {
-   /* float: right;*/
     width: 250px;
     margin-right: 10px;
-    /*margin-top: -195px;*/
     border: none;
     height: 150px;
 }
@@ -20,33 +18,13 @@
     width: 50%;
 }
 
-#destination-table {
-    /*width: 35%;*/
+#destination-table,.news-img,.weather-img,.yelp-img,.zomato-img,.attraction-img {
     cursor: pointer;
 
 }
 
-/*.news-img {
-    float:left;
-    margin-left: 10px;
-}
-
-.weather-img {
-    float: left;
-    margin-left: 120px;
-}
-
-.twitter-img {
-    float: left;
-    margin-left: 220px;
-}*/
-
 .destination {
-
     margin-top:90px;
-   /* float: right;   
-    margin-right: 400px;
-   /* width:25%;*/
 }
 
 .news-card {
@@ -62,6 +40,11 @@
 }
 
 .social-card {
+    float: left;
+    /* margin-left: 10px; */
+    border: none;
+}
+.zomato-card {
     float: left;
     margin-left: 10px;
     border: none;
@@ -91,12 +74,12 @@
 }
 
 /* The Close Button */
-    .fa-close {
-       /* background: lightgray;*/
-        font-weight: bold;
-        color: red;
-        width: 5%;
-        font-size: 20px;
+.fa-close {
+    /* background: lightgray;*/
+    font-weight: bold;
+    color: red;
+    width: 5%;
+    font-size: 20px;
 }
 
 .close:hover,.close:focus {
@@ -119,4 +102,7 @@
 }
 span{
     font-weight: bolder;
+}
+.card-columns {
+    margin:0;
 }

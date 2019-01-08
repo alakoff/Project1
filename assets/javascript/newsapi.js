@@ -8,6 +8,7 @@ $(".news-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
 
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -62,6 +63,7 @@ function drycode(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+    $('.zomato-body').empty();
 
     //fetch Top20 news article from API
     if (response.totalResults) {

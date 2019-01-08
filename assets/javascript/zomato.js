@@ -90,11 +90,11 @@ function displayZomato(res) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+    $('.zomato-body').empty();
+
 
 
     //Get and format 20 restaurants from Zomato API
-
-    console.log(res);
 
     //if response array length is greater than zero
     if (parseInt(res.results_found)>0) {
@@ -103,14 +103,11 @@ function displayZomato(res) {
         for (i = 0; i < 20; i++) {
 
             newDiv = $('<div>').attr('class', 'card');
-            // image = $('<img>').attr('src', res.articles[i].urlToImage).attr('class', 'card-img-top');
-            // newDiv.append(image);
-
             newbody = $('<div>').attr('class', 'card-body');
             otherElem1 = $('<h5>').text(res.restaurants[i].restaurant.name).attr('class', 'card-title');
-            otherElem2 = $('<p>').text(res.restaurants[i].restaurant.cuisines).attr('class', 'card-text');
-            otherElem3 = $('<p>').text(res.restaurants[i].restaurant.currency).attr('class', 'card-text');
-            otherElem4 = $('<p>').text(res.restaurants[i].restaurant.user_rating.aggregate_rating).attr('class', 'card-text');
+            otherElem2 = $('<p>').text('Cuisine: '+res.restaurants[i].restaurant.cuisines).attr('class', 'card-text');
+            otherElem3 = $('<p>').text('Pricing: '+res.restaurants[i].restaurant.currency).attr('class', 'card-text');
+            otherElem4 = $('<p>').text('Rating: '+res.restaurants[i].restaurant.user_rating.aggregate_rating).attr('class', 'card-text');
             otherElem5 = $('<a>').text('Menu').attr('href', res.restaurants[i].restaurant.menu_url).attr('class', 'btn btn-primary').attr('target', '_blank');
             newbody.append(otherElem1, otherElem2, otherElem3, otherElem4, otherElem5);
             newDiv.append(newbody);
@@ -156,6 +153,8 @@ function main1() {
         $(".news-img").css("border", "none");
         $(".weather-img").css("border", "none");
         $(".attraction-img").css("border", "none");
+        $(".yelp-img").css("border", "none");
+
 
         //If no global city variable defined yet, use last record in database
         if (!GlobalCity) {
