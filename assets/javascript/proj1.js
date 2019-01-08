@@ -80,46 +80,6 @@ function showModal(message) {
     }
 } //End 
 
-
-
-//Function to send data to the database and open News info
-//This is used for when a user clicks on the destinations table
-//with previously searched for destinations. Thefrefore, no data
-//validation is required before sending it to the database
-/*function sendToDatabase(city, zip, country) {
-
-    db.ref().push({
-        destCity: city,
-        destZip: zip,
-        destCountry: country,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-
-    });
-    //initilize global variabls after database push 
-    GlobalCity =city;
-    GlobalCountry =country;
-    Globalzip =zip;
-
-    //load news feeds from newsAPI on button click   
-    //using global variables to call newsAPI after new record insertion
-    functionCallAPI(GlobalCountry, GlobalCity);
-
-    //Clear input field
-    $(".input-destination").val("");
-
-    //Get database info for last 5 destinations and display in table
-    getRecentDestinations();
-
-    //Add image border to News icon 
-    $(".news-img").css("border", "2px solid gray");
-
-    //Clear image border from other icons
-    $(".weather-img").css("border", "none");
-    $(".attraction-img").css("border", "none");
-    $(".yelp-img").css("border", "none");
-
-} //End */
-
 //Function to get recent destinations
 function getRecentDestinations() {
 
@@ -174,7 +134,7 @@ function main() {
         $(".yelp-img").css("border", "none");
 
         //call newsAPI on destination row click with global variables;
-        functionCallAPI(GlobalCountry, GlobalCity);
+        functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
     });
 
 
@@ -220,7 +180,7 @@ function main() {
 
                 //load news feeds from newsAPI on button click
                 //using global variables                         
-                functionCallAPI(GlobalCountry, GlobalCity);
+                functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
 
                 //Clear input field
                 $(".input-destination").val("");
@@ -236,9 +196,7 @@ function main() {
                 $(".attraction-img").css("border", "none");
                 $(".yelp-img").css("border", "none");
 
-
             } else {
-
 
                 //Input is entered but not correctly
                 showModal('Destination input is not valid. Please enter "city,zip,country" separated by commas. If no zip code is applicable, just enter 00000.');
@@ -255,7 +213,6 @@ function main() {
     }); //End of click function        
 
 } //End 
-
 
 //Document Ready Function
 $(document).ready(function () {
