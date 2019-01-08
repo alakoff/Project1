@@ -8,35 +8,32 @@ $(".news-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
-    if(!GlobalCity){
+    if (!GlobalCity) {
 
-    db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+        db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
-        //initialise global variable
-        GlobalCity =snapshot.val().destCity;
-        GlobalCountry =snapshot.val().destCountry;
-        Globalzip =snapshot.val().destZip;
-        //using global variable to call API
-        functionCallAPI(GlobalCountry, GlobalCity);
-    });
+            //initialise global variable
+            GlobalCity = snapshot.val().destCity;
+            GlobalCountry = snapshot.val().destCountry;
+            Globalzip = snapshot.val().destZip;
+            //using global variable to call API
+            functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
+        });
 
-    }else
+    } else
 
-        functionCallAPI(GlobalCountry, GlobalCity);
+        functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
 
 });
 
 //function to call API
-function functionCallAPI(destCountry, destCity) {
+function functionCallAPI(destCountry, destCity, destZip) {
 
     /* For news Api */
     var NEWS_API_KEY = 'b83d1089394b41b5860ba157c186b529';
-    var COUNTRY = destCountry;
-    var CITY = destCity;
-
-    var queryURL = "https://newsapi.org/v2/everything?q='" + CITY + "'&apiKey=" + NEWS_API_KEY;
-    //var queryURL = "https://newsapi.org/v2/top-headlines?sources=abc-news-au&apiKey=" + NEWS_API_KEY;
-    //var queryURL = "https://newsapi.org/v2/top-headlines?category=general&country=" + COUNTRY + "&apiKey=" + NEWS_API_KEY;
+    
+    var queryURL = "https://newsapi.org/v2/everything?q='" + destCity + "'&apiKey=" + NEWS_API_KEY;
+    //var queryURL = "https://newsapi.org/v2/top-headlines?q='" + destCity + "'&category=general&country=" + destCountry + "&apiKey=" + NEWS_API_KEY;
     $.ajax({
 
         url: queryURL,
@@ -45,7 +42,7 @@ function functionCallAPI(destCountry, destCity) {
 
     }).then(function (response) {
 
-        console.log(response);
+        //console.log(response);
         drycode(response);
     });
 }
@@ -67,6 +64,7 @@ function drycode(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+
 
     //fetch Top20 news article from API
     if (response.totalResults) {
@@ -97,6 +95,7 @@ function drycode(response) {
 
         }
     } else {
+        $('.news-body').empty();
         $('.news-body').append(message);
 
     }

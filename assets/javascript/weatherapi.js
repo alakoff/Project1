@@ -1,8 +1,8 @@
 
-function apiCall(zip, country) {
+function apiCall(zip, country, city) {
 
-    var url = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
-    // console.log(url);
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
+   // console.log(url);
     $.ajax({
         url: url,
         method: "GET"
@@ -28,11 +28,11 @@ $(".weather-img").on("click", function () {
             GlobalCity = snapshot.val().destCity;
             GlobalCountry = snapshot.val().destCountry;
             Globalzip = snapshot.val().destZip;
-            apiCall(Globalzip, GlobalCountry);
+            apiCall(Globalzip, GlobalCountry, GlobalCity);
         });
     }
     else
-        apiCall(Globalzip, GlobalCountry);
+        apiCall(Globalzip, GlobalCountry, GlobalCity);
 });
 
 function displayWeather(response) {
@@ -43,22 +43,28 @@ function displayWeather(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
 
+    if (response.name) {
+        var newDiv = $('<div>').attr('class', 'card').css('width', '18rem');
+        var newDiv_body = $('<div>').attr('class', 'card-body');
+        var heading = $('<h5>').attr('class', 'card-title').text('Current Weather');
+        newDiv_body.append(heading);
 
-    var newDiv = $('<div>').attr('class', 'card').css('width','18rem');
-    var newDiv_body = $('<div>').attr('class', 'card-body');
-    var heading = $('<h5>').attr('class', 'card-title').text('Current Weather');
-    newDiv_body.append(heading);
+        var ulElem = $('<ul>').attr('class', 'list-group list-group-flush');
+        var liElem1 = $('<li>').attr('class', 'list-group-item').text(response.name + ", " + response.sys.country);
+        var liElem2 = $('<li>').attr('class', 'list-group-item').text(response.weather[0].description);
+        var liElem3 = $('<li>').attr('class', 'list-group-item').text("Humidity: " + response.main.humidity);
+        var liElem4 = $('<li>').attr('class', 'list-group-item').text("Temperature: " + response.main.temp);
+        var liElem5 = $('<li>').attr('class', 'list-group-item').text("Max temp: " + response.main.temp_max);
+        var liElem6 = $('<li>').attr('class', 'list-group-item').text("Min temp: " + response.main.temp_min);
 
-    var ulElem = $('<ul>').attr('class', 'list-group list-group-flush');
-    var liElem1 = $('<li>').attr('class', 'list-group-item').text(response.name + ", " + response.sys.country);
-    var liElem2 = $('<li>').attr('class', 'list-group-item').text(response.weather[0].description);
-    var liElem3 = $('<li>').attr('class', 'list-group-item').text("Humidity: " + response.main.humidity);
-    var liElem4 = $('<li>').attr('class', 'list-group-item').text("Temperature: " + response.main.temp);
-    var liElem5 = $('<li>').attr('class', 'list-group-item').text("Max temp: " + response.main.temp_max);
-    var liElem6 = $('<li>').attr('class', 'list-group-item').text("Min temp: " + response.main.temp_min);
+        ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
+        newDiv.append(newDiv_body, ulElem);
+        $('.weatherbody').append(newDiv);
+    }
+    else {
+        $('.weatherbody').empty();
+        $('.weatherbody').append(message);
 
-    ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
-    newDiv.append(newDiv_body, ulElem);
-    $('.weatherbody').append(newDiv);
+    }
 }
 
