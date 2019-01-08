@@ -8,6 +8,7 @@ $(".news-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+    if(!GlobalCity){
 
     db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -17,8 +18,12 @@ $(".news-img").on("click", function () {
         Globalzip =snapshot.val().destZip;
         //using global variable to call API
         functionCallAPI(GlobalCountry, GlobalCity);
-
     });
+
+    }else
+
+        functionCallAPI(GlobalCountry, GlobalCity);
+
 });
 
 //function to call API
