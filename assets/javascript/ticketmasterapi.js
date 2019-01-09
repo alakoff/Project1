@@ -64,6 +64,7 @@ function ticketmasterListing(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+    $('#weather_carousel').empty();
     
 
     if (response.page.totalElements) {

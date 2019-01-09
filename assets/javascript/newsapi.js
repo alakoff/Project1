@@ -64,6 +64,7 @@ function drycode(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+    $('#weather_carousel').empty();
 
 
     //fetch Top20 news article from API

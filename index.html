@@ -48,7 +48,7 @@
 
                 <!--first column-->
                 <div class="col-md-4">
-                   <a href="./index.html"><img src="assets/images/travel.jpg" alt=""></a>
+                    <a href="./index.html"><img src="assets/images/travel.jpg" alt=""></a>
                 </div>
                 <!--first column ends-->
 
@@ -177,8 +177,20 @@
                 </div>
 
                 <!-- Weather Card -->
+
+
                 <div class="card weather-card">
-                    <div class="card-body weatherbody"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body weatherbody"></div>
+                        </div>
+                        <div class="col-md-6" id="forcast">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" id="weather_carousel"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Yelp  Card -->
@@ -209,8 +221,6 @@
     <script src="assets/javascript/newsapi.js"></script>
     <script src="assets/javascript/ticketmasterapi.js"></script>
     <script src="assets/javascript/weatherapi.js"></script>
-
-
 </body>
 
 </html>
