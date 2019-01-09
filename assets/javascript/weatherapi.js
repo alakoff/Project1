@@ -104,10 +104,13 @@ function displayForcastWeather(response) {
         var pElem3;
         var pElem4;
         var card_deck;
-
+        var divclass = ['primary', 'secondary', 'success', 'warning', 'info', 'dark', 'danger'];
+        var j = 0;
         for (var i = 0; i < response.list.length; i++) {
+            if (j === 7) j = 0;
+            newDiv = $('<div>').attr('class', 'card text-white bg-' + divclass[j] + ' mb-3');
+            j++;
 
-            newDiv = $('<div>').attr('class', 'card text-white bg-primary mb-3');
             innerDiv = $('<div>').attr('class', 'card-header').text(moment.unix(response.list[i].dt).format('dddd HH:mm a'));
             divbody = $('<div>').attr('class', 'card-body');
             innerElem = $('<h5>').attr('class', 'card-title').text(response.list[i].weather[0].description);
