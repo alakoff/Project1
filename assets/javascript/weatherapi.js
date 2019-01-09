@@ -12,7 +12,7 @@ function apiCall(zip, country, city) {
         url: url,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+       // console.log(response);
         displayWeather(response);
     });
 
@@ -20,7 +20,7 @@ function apiCall(zip, country, city) {
         url: forcast_url,
         method: "GET"
     }).then(function (forcast_response) {
-        console.log(forcast_response);
+       // console.log(forcast_response);
         displayForcastWeather(forcast_response);
     });
 }
@@ -121,18 +121,18 @@ function displayForcastWeather(response) {
             pElem3 = $('<p>').attr('class', 'card-text').text("Max temp: " + response.list[i].main.temp_max);
             pElem4 = $('<p>').attr('class', 'card-text').text("Min temp: " + response.list[i].main.temp_min);
 
-
             divbody.append(pElem1, pElem2, pElem3, pElem4);
             innerDiv.append(divbody);
             newDiv.append(innerDiv);
+
             if (i === 0)
                 carouselDiv = $('<div>').attr('class', 'carousel-item active');
             else
                 carouselDiv = $('<div>').attr('class', 'carousel-item');
-            card_deck = $('<div>').attr('class', 'card-deck');
-            carouselDiv.append(card_deck);
 
+            card_deck = $('<div>').attr('class', 'card-deck');
             card_deck.append(newDiv);
+            carouselDiv.append(card_deck);
             $('#weather_carousel').append(carouselDiv);
         }
     }
