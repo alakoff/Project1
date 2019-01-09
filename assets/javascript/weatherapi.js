@@ -122,7 +122,7 @@ function displayForcastWeather(response) {
             divbody.append(pElem1, pElem2, pElem3, pElem4);
             innerDiv.append(divbody);
             newDiv.append(innerDiv);
-            if (i === 1)
+            if (i === 0)
                 carouselDiv = $('<div>').attr('class', 'carousel-item active');
             else
                 carouselDiv = $('<div>').attr('class', 'carousel-item');
