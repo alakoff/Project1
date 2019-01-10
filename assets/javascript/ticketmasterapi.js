@@ -6,7 +6,7 @@ function callTicketMasterAPI(Country, city, zipcode) {
     /* For ticketmaster Api */
     var TICKETMASTER_API_KEY = 'DVjga3FlueYjqRP5A2UaqjJ4vEvq0rU6';
     var queryURLforticketmaster = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&countryCode=" + Country + "&apikey=" + TICKETMASTER_API_KEY;
-    console.log(queryURLforticketmaster);
+   // console.log(queryURLforticketmaster);
 
     $.ajax({
 
@@ -16,7 +16,7 @@ function callTicketMasterAPI(Country, city, zipcode) {
 
     }).then(function (response) {
 
-        console.log(response);
+       // console.log(response);
         ticketmasterListing(response);
 
     });
@@ -31,8 +31,12 @@ $(".attraction-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+<<<<<<< HEAD
     $(".zomato-img").css("border", "none");
     $("#card12").hide();
+=======
+ 
+>>>>>>> master
    
     if(!GlobalCity){
 
@@ -66,7 +70,12 @@ function ticketmasterListing(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+<<<<<<< HEAD
     $('.zomato-body').empty();
+=======
+    $('#weather_carousel').empty();
+    
+>>>>>>> master
 
     if (response.page.totalElements) {
 
@@ -76,7 +85,6 @@ function ticketmasterListing(response) {
 
         for (var i = 0; i < data.length; i++) {
 
-            // outerDiv = $('<div>').attr('class', 'card bg-primary text-center text-white p-3 font-weight-bold');
             outerDiv = $('<div>').attr('class', 'card bg-info text-dark text-center font-weight-bold p-3');
             blockquote = $('<blockquote>').attr('class', 'blockquote mb-0');
             pElem = $('<p>').text(data[i].name);
@@ -93,7 +101,7 @@ function ticketmasterListing(response) {
 
         }
     } else {
-
+        $('#ticketmaster').empty();
         $('#ticketmaster').append(message);
 
     }

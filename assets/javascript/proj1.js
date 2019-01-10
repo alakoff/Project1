@@ -80,7 +80,10 @@ function showModal(message) {
     }
 } //End 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 //Function to get recent destinations
 function getRecentDestinations() {
 
@@ -121,11 +124,14 @@ function main() {
     //On click function for when user clicks on a previous destination in the table
     $("#destination-details").on('click', 'tr', function () {
         $("#card12").hide();
+<<<<<<< HEAD
 
         //Add border to clicked row in destinations table
         $("tr").css('border', 'none');
         $(this).css('border', '3px solid gray');
 
+=======
+>>>>>>> master
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
         }).get();
@@ -147,7 +153,7 @@ function main() {
         $(".zomato-img").css("border", "none");
 
         //call newsAPI on destination row click with global variables;
-        functionCallAPI(GlobalCountry, GlobalCity);
+        functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
     });
 
 
@@ -193,7 +199,7 @@ function main() {
 
                 //load news feeds from newsAPI on button click
                 //using global variables                         
-                functionCallAPI(GlobalCountry, GlobalCity);
+                functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
 
                 //Clear input field
                 $(".input-destination").val("");
@@ -209,9 +215,7 @@ function main() {
                 $(".attraction-img").css("border", "none");
                 $(".yelp-img").css("border", "none");
 
-
             } else {
-
 
                 //Input is entered but not correctly
                 showModal('Destination input is not valid. Please enter "city,zip,country" separated by commas. If no zip code is applicable, just enter 00000.');
@@ -228,7 +232,6 @@ function main() {
     }); //End of click function        
 
 } //End 
-
 
 //Document Ready Function
 $(document).ready(function () {
