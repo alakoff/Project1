@@ -8,11 +8,8 @@ $(".news-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".attraction-img").css("border", "none");
     $(".yelp-img").css("border", "none");
-<<<<<<< HEAD
     $(".zomato-img").css("border", "none");
-=======
     if (!GlobalCity) {
->>>>>>> master
 
         db.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
 
@@ -68,12 +65,9 @@ function drycode(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
-<<<<<<< HEAD
     $('.zomato-body').empty();
-=======
     $('#weather_carousel').empty();
 
->>>>>>> master
 
     //fetch Top20 news article from API
     if (response.totalResults) {

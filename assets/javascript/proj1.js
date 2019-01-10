@@ -80,10 +80,6 @@ function showModal(message) {
     }
 } //End 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 //Function to get recent destinations
 function getRecentDestinations() {
 
@@ -124,14 +120,11 @@ function main() {
     //On click function for when user clicks on a previous destination in the table
     $("#destination-details").on('click', 'tr', function () {
         $("#card12").hide();
-<<<<<<< HEAD
 
         //Add border to clicked row in destinations table
         $("tr").css('border', 'none');
         $(this).css('border', '3px solid gray');
 
-=======
->>>>>>> master
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
         }).get();
