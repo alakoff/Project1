@@ -10,7 +10,24 @@ function apiCall(zip, country, city) {
 
     $.ajax({
         url: url,
-        method: "GET"
+        method: "GET",
+        error: function(xhr, status, error){
+            
+            //clear the divs
+            $('#first').empty();
+            $('#second').empty();
+            $('#third').empty();
+            $('#fourth').empty();
+            $('#ticketmaster').empty();
+            $('.zomato-body').empty();
+
+            //Create error message
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+
+            //Add error message to weather body
+           $(".weatherbody").text(errorMessage);
+        }
+
     }).then(function (response) {
        // console.log(response);
         displayWeather(response);
@@ -33,6 +50,7 @@ $(".weather-img").on("click", function () {
     //Clear image border from other icons
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+    $(".zomato-img").css("border", "none");
     $(".attraction-img").css("border", "none");
 
     if (!Globalzip) {
@@ -56,6 +74,8 @@ function displayWeather(response) {
     $('#third').empty();
     $('#fourth').empty();
     $('#ticketmaster').empty();
+    $('.zomato-body').empty();
+
 
 
     if (response.name) {

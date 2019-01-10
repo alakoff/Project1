@@ -80,6 +80,10 @@ function showModal(message) {
     }
 } //End 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 //Function to get recent destinations
 function getRecentDestinations() {
 
@@ -91,6 +95,7 @@ function getRecentDestinations() {
 
         // Create new row and append city,zip and country code
         var row = $("<tr>");
+       
         row.append(
             $("<td>").attr('class', 'table-warning table-row').text(snapshot.val().destCity),
             $("<td>").attr('class', 'table-info table-row').text(snapshot.val().destZip),
@@ -99,6 +104,10 @@ function getRecentDestinations() {
 
         //Append row record to destinations table
         $("#destination-details").append(row);
+        
+        //Add border to last row just added to the table
+        $("tr").css('border','none');
+        $("tr:last").css('border','3px solid gray');
 
     });
 
@@ -115,6 +124,14 @@ function main() {
     //On click function for when user clicks on a previous destination in the table
     $("#destination-details").on('click', 'tr', function () {
         $("#card12").hide();
+<<<<<<< HEAD
+
+        //Add border to clicked row in destinations table
+        $("tr").css('border', 'none');
+        $(this).css('border', '3px solid gray');
+
+=======
+>>>>>>> master
         var rowData = $(this).children('td').map(function () {
             return $(this).text();
         }).get();
@@ -125,6 +142,7 @@ function main() {
         GlobalCity = rowData[0];
         Globalzip = rowData[1];
         GlobalCountry = rowData[2];
+
         //Add image border to News icon 
         $(".news-img").css("border", "3px solid grey");
 
@@ -132,6 +150,7 @@ function main() {
         $(".weather-img").css("border", "none");
         $(".attraction-img").css("border", "none");
         $(".yelp-img").css("border", "none");
+        $(".zomato-img").css("border", "none");
 
         //call newsAPI on destination row click with global variables;
         functionCallAPI(GlobalCountry, GlobalCity, Globalzip);
@@ -206,7 +225,7 @@ function main() {
         } else {
 
             //Input is not entered, prompt to enter input
-            showModal('Please enter you destination city, zip code and country code!');
+            showModal('Please enter the destination city, zip code and country code! Or click on a previous destination.');
 
         }
 

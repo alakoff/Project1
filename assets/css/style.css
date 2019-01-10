@@ -18,14 +18,25 @@
     width: 50%;
 }
 
+<<<<<<< HEAD
+#destination-table,.news-img,.weather-img,.yelp-img,.zomato-img,.attraction-img {
+    cursor: pointer;
+
+}
+
+=======
 #destination-table {
     cursor: pointer;
 
 }
+>>>>>>> master
 .destination {
-
     margin-top:90px;
+<<<<<<< HEAD
+}
+=======
  }
+>>>>>>> master
 
 .news-card {
     float: left;
@@ -40,6 +51,11 @@
 }
 
 .social-card {
+    float: left;
+    /* margin-left: 10px; */
+    border: none;
+}
+.zomato-card {
     float: left;
     margin-left: 10px;
     border: none;
@@ -69,11 +85,20 @@
 }
 
 /* The Close Button */
+<<<<<<< HEAD
+.fa-close {
+    /* background: lightgray;*/
+    font-weight: bold;
+    color: red;
+    width: 5%;
+    font-size: 20px;
+=======
     .fa-close {
         font-weight: bold;
         color: red;
         width: 5%;
         font-size: 20px;
+>>>>>>> master
 }
 
 .close:hover,.close:focus {
@@ -93,6 +118,11 @@
 span{
     font-weight: bolder;
 }
+<<<<<<< HEAD
+.card-columns {
+    margin:0;
+=======
 #forcast{
     margin-top: 80px;
+>>>>>>> master
 }

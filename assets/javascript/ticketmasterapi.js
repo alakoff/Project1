@@ -31,7 +31,12 @@ $(".attraction-img").on("click", function () {
     $(".weather-img").css("border", "none");
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
+<<<<<<< HEAD
+    $(".zomato-img").css("border", "none");
+    $("#card12").hide();
+=======
  
+>>>>>>> master
    
     if(!GlobalCity){
 
@@ -57,6 +62,7 @@ function ticketmasterListing(response) {
     var pElem;
     var footer;
     var ancherElem;
+    
     //clear the div
     $('#first').empty();
     $('#second').empty();
@@ -64,8 +70,12 @@ function ticketmasterListing(response) {
     $('#fourth').empty();
     $('#ticketmaster').empty();
     $('.weatherbody').empty();
+<<<<<<< HEAD
+    $('.zomato-body').empty();
+=======
     $('#weather_carousel').empty();
     
+>>>>>>> master
 
     if (response.page.totalElements) {
 
