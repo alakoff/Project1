@@ -1,12 +1,8 @@
 
 function apiCall(zip, country, city) {
 
-<<<<<<< HEAD
-    var url = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
-=======
     //current weather URL
     var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&zip=" + zip + "," + country + "&units=imperial&appid=ee0fc7e4084dd72152033db8d2dac3d0";
->>>>>>> master
     // console.log(url);
     //forcast weather URL
     var forcast_url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&zip=" + zip + "," + country + "&units=imperial&appid=69baadc4bd0301e119aa930b8c5069e2";
@@ -35,14 +31,6 @@ function apiCall(zip, country, city) {
     }).then(function (response) {
        // console.log(response);
         displayWeather(response);
-<<<<<<< HEAD
-        
-    })
-    
-}
-
-//  event for when a new object is added to the database
-=======
     });
 
     $.ajax({
@@ -54,7 +42,6 @@ function apiCall(zip, country, city) {
     });
 }
 //  event on click of weather image
->>>>>>> master
 $(".weather-img").on("click", function () {
 
     //Add image border to weather icon 
@@ -79,9 +66,6 @@ $(".weather-img").on("click", function () {
         apiCall(Globalzip, GlobalCountry, GlobalCity);
 });
 
-<<<<<<< HEAD
-function displayWeather(response) {
-=======
 //for current weather
 function displayWeather(response) {
     //clear the div
@@ -90,6 +74,8 @@ function displayWeather(response) {
     $('#third').empty();
     $('#fourth').empty();
     $('#ticketmaster').empty();
+    $('.zomato-body').empty();
+
 
 
     if (response.name) {
@@ -118,7 +104,6 @@ function displayWeather(response) {
 }
 //for forcast weather
 function displayForcastWeather(response) {
->>>>>>> master
 
     //clear the div
     $('#first').empty();
@@ -126,26 +111,6 @@ function displayForcastWeather(response) {
     $('#third').empty();
     $('#fourth').empty();
     $('#ticketmaster').empty();
-<<<<<<< HEAD
-    $('.zomato-body').empty();
-
-    var newDiv = $('<div>').attr('class', 'card').css('width','18rem');
-    var newDiv_body = $('<div>').attr('class', 'card-body');
-    var heading = $('<h5>').attr('class', 'card-title').text('Current Weather');
-    newDiv_body.append(heading);
-
-    var ulElem = $('<ul>').attr('class', 'list-group list-group-flush');
-    var liElem1 = $('<li>').attr('class', 'list-group-item').text(response.name + ", " + response.sys.country);
-    var liElem2 = $('<li>').attr('class', 'list-group-item').text(response.weather[0].description);
-    var liElem3 = $('<li>').attr('class', 'list-group-item').text("Humidity: " + response.main.humidity);
-    var liElem4 = $('<li>').attr('class', 'list-group-item').text("Temperature: " + response.main.temp);
-    var liElem5 = $('<li>').attr('class', 'list-group-item').text("Max temp: " + response.main.temp_max);
-    var liElem6 = $('<li>').attr('class', 'list-group-item').text("Min temp: " + response.main.temp_min);
-
-    ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
-    newDiv.append(newDiv_body, ulElem);
-    $('.weatherbody').append(newDiv);
-=======
     $('#weather_carousel').empty();
 
     if (response.list.length !== 0) {
@@ -196,6 +161,4 @@ function displayForcastWeather(response) {
         $('.weatherbody').append(message);
     }
 }
->>>>>>> master
 
-}
