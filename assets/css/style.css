@@ -34,9 +34,9 @@
 
 }
 .weather-card {
-    float: left;
-    margin-left: 10px;
-    border: none;
+  /* float: left;*/
+   margin-left: 10px;
+   border: none;
 }
 
 .social-card {
@@ -92,4 +92,7 @@
 }
 span{
     font-weight: bolder;
+}
+#forcast{
+    margin-top: 80px;
 }
