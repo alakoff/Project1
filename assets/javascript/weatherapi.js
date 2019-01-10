@@ -79,18 +79,18 @@ function displayWeather(response) {
 
 
     if (response.name) {
-        var newDiv = $('<div>').attr('class', 'card').css('width', '18rem');
+        var newDiv = $('<div>').attr('class', 'card text-white bg-primary mb-3').css('width', '18rem');
         var newDiv_body = $('<div>').attr('class', 'card-body');
         var heading = $('<h5>').attr('class', 'card-title').text('Current Weather');
         newDiv_body.append(heading);
 
-        var ulElem = $('<ul>').attr('class', 'list-group list-group-flush');
-        var liElem1 = $('<li>').attr('class', 'list-group-item').text(response.name + ", " + response.sys.country);
-        var liElem2 = $('<li>').attr('class', 'list-group-item').text(response.weather[0].description);
-        var liElem3 = $('<li>').attr('class', 'list-group-item').text("Humidity: " + response.main.humidity);
-        var liElem4 = $('<li>').attr('class', 'list-group-item').text("Temperature: " + response.main.temp);
-        var liElem5 = $('<li>').attr('class', 'list-group-item').text("Max temp: " + response.main.temp_max);
-        var liElem6 = $('<li>').attr('class', 'list-group-item').text("Min temp: " + response.main.temp_min);
+        var ulElem = $('<p>').attr('class', 'card-header');
+        var liElem1 = $('<p>').attr('class', 'card-text').text(response.name + ", " + response.sys.country);
+        var liElem2 = $('<p>').attr('class', 'card-text').text(response.weather[0].description);
+        var liElem3 = $('<p>').attr('class', 'card-text').text("Humidity: " + response.main.humidity);
+        var liElem4 = $('<p>').attr('class', 'card-text').text("Temperature: " + response.main.temp);
+        var liElem5 = $('<p>').attr('class', 'card-text').text("Max temp: " + response.main.temp_max);
+        var liElem6 = $('<p>').attr('class', 'card-text').text("Min temp: " + response.main.temp_min);
 
         ulElem.append(liElem1, liElem2, liElem3, liElem4, liElem5, liElem6);
         newDiv.append(newDiv_body, ulElem);
@@ -130,7 +130,7 @@ function displayForcastWeather(response) {
             if (j === 7) j = 0;
             newDiv = $('<div>').attr('class', 'card text-white bg-' + divclass[j] + ' mb-3');
             j++;
-
+            
             innerDiv = $('<div>').attr('class', 'card-header').text(moment.unix(response.list[i].dt).format('dddd HH:mm a'));
             divbody = $('<div>').attr('class', 'card-body');
             innerElem = $('<h5>').attr('class', 'card-title').text(response.list[i].weather[0].description);
