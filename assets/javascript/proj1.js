@@ -207,6 +207,7 @@ function main() {
                 $(".weather-img").css("border", "none");
                 $(".attraction-img").css("border", "none");
                 $(".yelp-img").css("border", "none");
+                $(".zomato-img").css("border", "none");
 
             } else {
 
