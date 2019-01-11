@@ -166,10 +166,11 @@ function main1() {
                 GlobalCity = snapshot.val().destCity;
                 GlobalCountry = snapshot.val().destCountry;
                 Globalzip = snapshot.val().destZip;
+                zomato(GlobalCity);
 
-            })
+            });
         }
-            
+          else  
         //using global city variable to start Zomato API process
         zomato(GlobalCity);
           
