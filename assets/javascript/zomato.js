@@ -170,9 +170,12 @@ function main1() {
 
             });
         }
-          else  
-        //using global city variable to start Zomato API process
-        zomato(GlobalCity);
+          else  {
+
+            //using global city variable to start Zomato API process
+            zomato(GlobalCity);
+            
+          }
           
       });
 
