@@ -32,7 +32,7 @@ $(".attraction-img").on("click", function () {
     $(".news-img").css("border", "none");
     $(".yelp-img").css("border", "none");
     $(".zomato-img").css("border", "none");
-    $("#card12").hide();
+  
    
     if(!GlobalCity){
 
