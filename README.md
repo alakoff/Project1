@@ -41,5 +41,5 @@ Forecasts address obvious necessities in planning such as what travellers need t
 * [Andrew Lakoff](https://github.com/alakoff)
 * [Silpa Shinto](https://github.com/silpashinto)
 * [Luis Hamburger](https://github.com/luisrh11)
-* [Alexa Oswald](hhtps://github.com/alexaoswald)
+* [Alexa Oswald](htps://github.com/alexaoswald)
 
